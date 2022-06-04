@@ -1,0 +1,22 @@
+@import "../settings/colors";
+
+.Preloader {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(252, 252, 252);
+    z-index: 1000;
+    position: fixed;
+    
+
+    &__header {
+        margin-bottom: 1rem;
+        img {
+            max-width: 500px;
+            width: 100%;
+        }
+    }
+}
