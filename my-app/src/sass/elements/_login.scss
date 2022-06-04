@@ -1,0 +1,12 @@
+.Login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+
+    &__box {
+        background-color: $color-primary;
+        padding: 2rem;
+    }
+}
