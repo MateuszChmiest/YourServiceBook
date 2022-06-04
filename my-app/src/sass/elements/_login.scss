@@ -5,7 +5,7 @@
 	flex-direction: column;
 	width: 100vw;
 	height: 100vh;
-    padding: 1rem;
+	padding: 1rem;
 
 	h1 {
 		margin-bottom: 1.75rem;
@@ -26,7 +26,7 @@
 	}
 
 	&__box {
-		padding: 0 3rem 4rem 3rem;
+		padding: 0 3rem 1rem 3rem;
 		border-radius: 20px;
 		background: #38b6ff;
 		box-shadow: 11px 11px 34px #2e95d1, -11px -11px 50px #42d7ff;
@@ -34,7 +34,18 @@
 		Form {
 			font-family: $font-primary;
 			font-weight: 400;
-            color: white;
+			color: white;
+
+			p {
+                text-align: center;
+                margin-top: 2rem;
+			}
+
+			span {
+				color: black;
+				font-weight: 400;
+				cursor: pointer;
+			}
 		}
 	}
 }
