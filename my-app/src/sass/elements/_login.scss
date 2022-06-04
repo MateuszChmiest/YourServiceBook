@@ -1,12 +1,40 @@
 .Login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100vw;
+	height: 100vh;
+    padding: 1rem;
 
-    &__box {
-        background-color: $color-primary;
-        padding: 2rem;
-    }
+	h1 {
+		margin-bottom: 1.75rem;
+		z-index: 10;
+
+		span {
+			color: $color-primary;
+		}
+	}
+
+	img {
+		margin-top: 1.75rem;
+	}
+
+	&__user {
+		text-align: center;
+		margin-bottom: 2rem;
+	}
+
+	&__box {
+		padding: 0 3rem 4rem 3rem;
+		border-radius: 20px;
+		background: #38b6ff;
+		box-shadow: 11px 11px 34px #2e95d1, -11px -11px 50px #42d7ff;
+
+		Form {
+			font-family: $font-primary;
+			font-weight: 400;
+            color: white;
+		}
+	}
 }
