@@ -1,5 +1,5 @@
-// import { Button, Form } from "react-bootstrap";
-// import "bootstrap/dist/css/bootstrap.min.css";
+import { Button, Form } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../images/logo.png";
 import user_img from "../images/user.png";
 import { useRef, useState } from "react";
@@ -11,19 +11,21 @@ const Login = () => {
 	const emailRef = useRef();
 	const passwordRef = useRef();
 
-	async function handleSignUp() {
+	async function handleSignUp(e) {
+		e.preventDefault();
 		try {
 			await signup(emailRef.current.value, passwordRef.current.value);
 		} catch {
-			alert("Error");
+			setEmailError("Error");
 		}
 	}
 
-	async function handleSignIn() {
+	async function handleSignIn(e) {
+		e.preventDefault();
 		try {
 			await singin(emailRef.current.value, passwordRef.current.value);
 		} catch {
-			alert("Error");
+			setEmailError("Error");
 		}
 	}
 
@@ -38,76 +40,51 @@ const Login = () => {
 					Join <span>Us!</span>
 				</h1>
 			)}
+			<p>{emailError}</p>
 			<div className='Login__box'>
-				<div className='Login__user'>
-					<img src={user_img} alt='user' width={50} />
-				</div>
-				<div className='Login__form'>
-					<input ref={emailRef} type='email' placeholder='Enter email' />
-					<input type='password' ref={passwordRef} placeholder='Password' />
-					{hasAccount ? (
-						<>
-							<button onClick={handleSignUp}>Sign Up</button>
-                            <p>
-								Don't have an account?
-								<span onClick={() => setHasAccount(!hasAccount)}> Sign up</span>
-							</p>
-						</>
-					) : (
-						<>
-							<button onClick={handleSignIn}>Sign Up</button>
-                            <p>
-								Have an account?
-								<span onClick={() => setHasAccount(!hasAccount)}> Sign in</span>
-							</p>
-						</>
-					)}
-				</div>
-				{/* <Form>
-					<Form.Group className='mb-3' controlId='formBasicEmail'>
-						<Form.Label>Email address</Form.Label>
-						<Form.Control
-							type='email'
-							placeholder='Enter email'
-							ref={emailRef}
-						/>
-						<Form.Text className='text-muted'>
-							We'll never share your email with anyone else. */}
-				{/* </Form.Text> */}
-				{/* <p className='errorMsg'>{emailError}</p> */}
-				{/* </Form.Group> */}
+    			<div className='Login__user'>
+        			<img src={user_img} alt='user' width={50} />
+    			</div>
+    		
+			<Form onSubmit={handleSignUp}>
+				<Form.Group className='mb-3' controlId='formBasicEmail'>
+					<Form.Label>Email address</Form.Label>
+					<Form.Control type='email' placeholder='Enter email' ref={emailRef} />
+					<Form.Text className='text-muted'>
+						We'll never share your email with anyone else.
+					</Form.Text>
+				</Form.Group>
 
-				{/* <Form.Group className='mb-3' controlId='formBasicPassword'>
-						<Form.Label>Password</Form.Label>
-						<Form.Control
-							type='password'
-							placeholder='Password'
-                            ref={passwordRef}
-						/> */}
-				{/* <p className='errorMsg'>{passwordError}</p> */}
-				{/* </Form.Group>
-					{hasAccount ? (
-						<>
-							<Button variant='primary' type='submit' >
-								Login
-							</Button>
-							<p>
-								Don't have an account?
-								<span onClick={() => setHasAccount(!hasAccount)}> Sign up</span>
-							</p>
-						</>
-					) : (
-						<>
-							<Button variant='primary' type='submit' onClick={handleSignup}>
-								Register
-							</Button>
-							<p>
-								Have an account?
-								<span onClick={() => setHasAccount(!hasAccount)}> Sign in</span>
-							</p>
-						</>
-					)}
-				</Form> */}
+				<Form.Group className='mb-3' controlId='formBasicPassword'>
+					<Form.Label>Password</Form.Label>
+					<Form.Control
+						type='password'
+						placeholder='Password'
+						ref={passwordRef}
+					/>
+				</Form.Group>
+				{hasAccount ? (
+					<>
+						<Button variant='primary' type='submit'>
+							Login
+						</Button>
+						<p>
+							Don't have an account?
+							<span onClick={() => setHasAccount(!hasAccount)}> Sign up</span>
+						</p>
+					</>
+				) : (
+					<>
+						<Button variant='primary' type='submit'>
+							Register
+						</Button>
+						<p>
+							Have an account?
+							<span onClick={() => setHasAccount(!hasAccount)}> Sign in</span>
+						</p>
+					</>
+				)}
+			</Form>
 			</div>
 			<img src={logo} alt='logo' width={100} />
 		</section>
