@@ -7,8 +7,14 @@
 	height: 100vh;
 	padding: 1rem;
 
+	#error-text {
+		color: red;
+		margin-bottom: 1rem;
+	}
+
 	h1 {
-		margin-bottom: 1.75rem;
+		font-size: 2.5rem;
+		margin-bottom: 1.5rem;
 		z-index: 10;
 
 		span {
@@ -17,7 +23,7 @@
 	}
 
 	img {
-		margin-top: 1.75rem;
+		margin-top: 1.5rem;
 	}
 
 	&__user {
@@ -26,11 +32,12 @@
 	}
 
 	&__box {
+		border: 2px solid #04a3ff;
 		padding: 0 3rem 1rem 3rem;
 		border-radius: 20px;
 		background: #38b6ff;
-		box-shadow: 11px 11px 34px #2e95d1, -11px -11px 50px #42d7ff;
-
+		box-shadow:  5px 5px 10px #bfbfbf,
+		-5px -5px 10px #ffffff;
 		Form {
 			font-family: $font-primary;
 			font-weight: 400;
@@ -45,7 +52,11 @@
 				color: black;
 				font-weight: 400;
 				cursor: pointer;
-				margin: 0;
+				transition: text-shadow ease-in-out;
+
+				&:hover {
+					text-shadow: 0px 0px 4px rgba(44, 44, 44, 0.82);
+				}
 			}
 		}
 	}
