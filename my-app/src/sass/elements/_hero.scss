@@ -1,0 +1,51 @@
+
+.Hero {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    box-shadow: 0 3px 15px 7px rgb(0 0 0 / 15%);
+
+    &__menu {
+        background-color: blue;
+        width: 10vw;
+        height: 100vh;
+        background: url("./background-dashboard.jpg") no-repeat center;
+        position: relative;
+        box-shadow: rgb(0 0 0 / 15%) 5px 0px 5px;
+    }
+
+    &__btn {
+            position: absolute;
+            border-top-right-radius: 32px;
+            border-bottom-right-radius: 32px;
+            border: none;
+            width: 16px;
+            height: 32px;
+            right: -16px;
+            top: 50%;
+            cursor: pointer;
+            background: rgb(180, 180, 180) url("./arrow.png") no-repeat center;
+            box-shadow: rgb(0 0 0 / 15%) 5px 0px 5px;
+    }
+
+    &__dashboard {
+        width: 90vw;
+        height: 100vh;
+        box-shadow: rgb(0 0 0 / 15%) 5px 0px 5px;
+    }
+
+    &__list {
+        font-family: $font-primary;
+        font-weight: 500;
+        font-size: 1rem;
+        text-transform: uppercase;
+        
+        li {
+            padding: 1rem 0 1rem 1.15rem;
+            
+            a {
+                cursor: pointer;
+            }
+        }
+    }
+}
