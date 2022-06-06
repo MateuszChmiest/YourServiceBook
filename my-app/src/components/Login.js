@@ -23,13 +23,13 @@ const Login = () => {
 		if (password !== repeatPassword) {
 			return setError("Passwords are not the same") & setLoading(false);
 		}
-		if (password.length > 6 || repeatPassword.length > 6) {
-			return setError("Passwords are not the same") & setLoading(false);
-		}
+		// if (password.length > 6 || repeatPassword.length > 6) {
+		// 	return setError("Password must be longer than 6 characters") & setLoading(false);
+		// }
 		try {
 			await signup(email, password);
 		} catch {
-			setError("The account already exists");
+			setError("Password must be longer than 6 characters");
 			clearInputs();
 		}
 		setLoading(false);
