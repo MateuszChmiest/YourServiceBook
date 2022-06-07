@@ -1,68 +1,11 @@
-// .Pulpit {
-// 	background-color: $color-primary;
-// 	width: 100vw;
-// 	display: flex;
-// 	justify-content: center;
-
-// 	&__nav {
-// 		display: flex;
-//         flex-direction: column;
-//         align-items: center;
-// 		max-width: 1352px;
-// 		width: 100%;
-
-// 		@include tablet {
-// 			justify-content: space-between;
-// 			flex-direction: unset;
-// 		}
-
-// 		img {
-// 			padding: 0.25rem;
-// 			max-width: 180px;
-// 			width: 100%;
-
-//             @include tablet {
-//                 padding: 1rem;
-//             }
-// 		}
-// 	}
-
-//     &__btn {
-//         padding: 0.15rem 0.75rem 0.15rem 0.75rem;
-//         background-color: #1cacff;
-//         font-family: $font-primary;
-//         border: 1px solid rgb(255, 255, 255);
-
-//         @include tablet {
-//             padding: 0.25rem 1.25rem 0.25rem 1.25rem;
-//         }
-//     }
-
-// 	&__user {
-//         padding: 0.25rem;
-// 		display: flex;
-// 		align-items: center;
-
-//         @include tablet {
-//             padding: 1rem;
-//         }
-
-// 		h2 {
-// 			margin-right: 1rem;
-// 			color: white;
-// 			span {
-// 				color: black;
-// 				font-weight: 500;
-// 			}
-// 		}
-// 	}
-// }
 .Hero {
 	background-color: rgb(70, 70, 70);
 	min-height: 4.5rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	z-index: 9;
+    box-shadow: rgb(0 0 0 / 40%) 0px 2px 3px, rgb(0 0 0 / 5%) 0px 1px 0px;
 
 	&__toggle {
 		background-color: rgb(70, 70, 70);
@@ -74,9 +17,12 @@
 	}
 
 	img {
-		max-width: 140px;
+		max-width: 120px;
 		width: 100%;
-		margin-right: 2rem;
+
+		@include tablet {
+			max-width: 140px;
+		}
 	}
 
 	&__user {
@@ -103,12 +49,31 @@
 				font-family: $font-primary;
 			}
 		}
+
+		img {
+			max-width: 35px;
+			width: 100%;
+			margin-bottom: 0.15rem;
+		}
 	}
 
 	&__bars {
-		margin-left: 2rem;
-		font-size: 2rem;
+		margin-left: 1rem;
+		font-size: 1.75rem;
 		background-color: none;
+
+		@include tablet {
+			margin-left: 2rem;
+			font-size: 2rem;
+		}
+	}
+
+	h2 {
+		margin-right: 1rem;
+
+		@include tablet {
+			margin-right: 2rem;
+		}
 	}
 
 	&__nav {
@@ -123,6 +88,7 @@
 		top: 0;
 		left: -100%;
 		transition: 850ms;
+		box-shadow: rgb(0 0 0 / 20%) 5px 0px 10px;
 
 		&__items {
 			width: 100%;
@@ -141,7 +107,8 @@
 		align-items: center;
 		padding: 8px 0 8px 16px;
 		list-style: none;
-		height: 3.75rem;
+		height: 4.5rem;
+		margin-top:1.15rem;
 
 		span {
 			margin-left: 1rem;
@@ -149,7 +116,7 @@
 
 		a {
 			text-decoration: none;
-			color: white;
+			color: black;
 			font-size: 1.25rem;
 			width: 95%;
 			height: 100%;

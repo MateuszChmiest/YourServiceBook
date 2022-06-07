@@ -13,7 +13,7 @@ export const PulpitData = [
         cName: 'Hero__text',
     },
     {
-        title: 'MyCar',
+        title: 'My Car',
         path: '/my-car',
         icon: <AiFillCar/>,
         cName: 'Hero__text',

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { Button } from "react-bootstrap";
 import logo from "../images/logo-white.png";
+import userImg from "../images/user.png"
 import { FaBars, FaRegWindowClose } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { PulpitData } from "./HeroData";
@@ -41,6 +42,7 @@ const Pulpit = ({ handleLogout, currentUser }) => {
 					})}
 				</ul>
 				<div className='Hero__user'>
+					<img src={userImg}/>
 				<h2>
 					<span>Welcome: </span><br/>
 					{currentUser.email}
