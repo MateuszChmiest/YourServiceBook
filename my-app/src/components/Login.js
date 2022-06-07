@@ -4,9 +4,11 @@ import logo from "../images/logo.png";
 import user_img from "../images/user.png";
 import { useState } from "react";
 import { signup, login, useAuth, logout, auth } from "../firebase";
-import Pulpit from "./Pulpit";
+import Pulpit from "./Hero";
 import { FcGoogle } from "react-icons/fc";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Preloader from "./Preloader";
 
 const Login = () => {
 	const [hasAccount, setHasAccount] = useState("false");
@@ -51,9 +53,9 @@ const Login = () => {
 		setLoading(false);
 	}
 
-		function signInWithGoogle() {
+	function signInWithGoogle() {
 		const provider = new GoogleAuthProvider();
-		signInWithPopup(auth,provider)
+		signInWithPopup(auth, provider);
 	}
 
 	//Function to Logout
@@ -80,7 +82,15 @@ const Login = () => {
 	return (
 		<>
 			{currentUser ? (
-				<Pulpit handleLogout={handleLogout} currentUser={currentUser} />
+				<>
+				<Preloader/>
+				<Router>
+					<Pulpit handleLogout={handleLogout} currentUser={currentUser} />
+					<Routes>
+						<Route path='/' />
+					</Routes>
+				</Router>
+				</>
 			) : (
 				<section className='Login'>
 					{hasAccount ? (
@@ -155,10 +165,12 @@ const Login = () => {
 										variant='primary'
 										type='submit'
 										disabled={loading || currentUser}
-										id="Login__btn">
+										id='Login__btn'>
 										Login
 									</Button>
-									<Button variant="light" onClick={signInWithGoogle}><FcGoogle/></Button>
+									<Button variant='light' onClick={signInWithGoogle}>
+										<FcGoogle />
+									</Button>
 									<p>
 										Don't have an account?
 										<span
@@ -174,10 +186,12 @@ const Login = () => {
 										variant='primary'
 										type='submit'
 										disabled={loading || currentUser}
-										id="Login__btn">
+										id='Login__btn'>
 										Register
 									</Button>
-									<Button variant="light" onClick={signInWithGoogle}><FcGoogle/></Button>
+									<Button variant='light' onClick={signInWithGoogle}>
+										<FcGoogle />
+									</Button>
 									<p>
 										Have an account?
 										<span

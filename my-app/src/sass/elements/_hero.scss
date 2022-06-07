@@ -1,51 +1,167 @@
+// .Pulpit {
+// 	background-color: $color-primary;
+// 	width: 100vw;
+// 	display: flex;
+// 	justify-content: center;
 
+// 	&__nav {
+// 		display: flex;
+//         flex-direction: column;
+//         align-items: center;
+// 		max-width: 1352px;
+// 		width: 100%;
+
+// 		@include tablet {
+// 			justify-content: space-between;
+// 			flex-direction: unset;
+// 		}
+
+// 		img {
+// 			padding: 0.25rem;
+// 			max-width: 180px;
+// 			width: 100%;
+
+//             @include tablet {
+//                 padding: 1rem;
+//             }
+// 		}
+// 	}
+
+//     &__btn {
+//         padding: 0.15rem 0.75rem 0.15rem 0.75rem;
+//         background-color: #1cacff;
+//         font-family: $font-primary;
+//         border: 1px solid rgb(255, 255, 255);
+
+//         @include tablet {
+//             padding: 0.25rem 1.25rem 0.25rem 1.25rem;
+//         }
+//     }
+
+// 	&__user {
+//         padding: 0.25rem;
+// 		display: flex;
+// 		align-items: center;
+
+//         @include tablet {
+//             padding: 1rem;
+//         }
+
+// 		h2 {
+// 			margin-right: 1rem;
+// 			color: white;
+// 			span {
+// 				color: black;
+// 				font-weight: 500;
+// 			}
+// 		}
+// 	}
+// }
 .Hero {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    box-shadow: 0 3px 15px 7px rgb(0 0 0 / 15%);
+	background-color: rgb(70, 70, 70);
+	min-height: 4.5rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 
-    &__menu {
-        background-color: blue;
-        width: 10vw;
-        height: 100vh;
-        background: url("./background-dashboard.jpg") no-repeat center;
-        position: relative;
-        box-shadow: rgb(0 0 0 / 15%) 5px 0px 5px;
-    }
+	&__toggle {
+		background-color: rgb(70, 70, 70);
+		width: 100%;
+		height: 4.5rem;
+		display: flex;
+		justify-content: start;
+		align-items: center;
+	}
 
-    &__btn {
-            position: absolute;
-            border-top-right-radius: 32px;
-            border-bottom-right-radius: 32px;
-            border: none;
-            width: 16px;
-            height: 32px;
-            right: -16px;
-            top: 50%;
-            cursor: pointer;
-            background: rgb(180, 180, 180) url("./arrow.png") no-repeat center;
-            box-shadow: rgb(0 0 0 / 15%) 5px 0px 5px;
-    }
+	img {
+		max-width: 140px;
+		width: 100%;
+		margin-right: 2rem;
+	}
 
-    &__dashboard {
-        width: 90vw;
-        height: 100vh;
-        box-shadow: rgb(0 0 0 / 15%) 5px 0px 5px;
-    }
+	&__user {
+		padding: 0.25rem;
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		max-width: 250px;
+		width: 100%;
+		background-color: rgb(70, 70, 70);
 
-    &__list {
-        font-family: $font-primary;
-        font-weight: 500;
-        font-size: 1rem;
-        text-transform: uppercase;
-        
-        li {
-            padding: 1rem 0 1rem 1.15rem;
-            
-            a {
-                cursor: pointer;
-            }
-        }
-    }
+		@include tablet {
+			padding: 1rem;
+		}
+
+		h2 {
+			color: $color-primary;
+			text-align: center;
+			margin-bottom: 0.75rem;
+			line-height: 1.25rem;
+			span {
+				color: white;
+				font-weight: 500;
+				font-family: $font-primary;
+			}
+		}
+	}
+
+	&__bars {
+		margin-left: 2rem;
+		font-size: 2rem;
+		background-color: none;
+	}
+
+	&__nav {
+		background: url("./background-dashboard.jpg") no-repeat center;
+		height: 100vh;
+		max-width: 15rem;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		flex-direction: column;
+		position: fixed;
+		top: 0;
+		left: -100%;
+		transition: 850ms;
+
+		&__items {
+			width: 100%;
+		}
+	}
+
+	&__nav.active {
+		left: 0;
+		transition: 350ms ease-out;
+	}
+
+
+	&__text {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 8px 0 8px 16px;
+		list-style: none;
+		height: 3.75rem;
+
+		span {
+			margin-left: 1rem;
+		}
+
+		a {
+			text-decoration: none;
+			color: white;
+			font-size: 1.25rem;
+			width: 95%;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			padding: 0 1rem;
+			border-radius: 4px;
+			font-family: $font-primary;
+
+			&:hover {
+				background-color: $color-primary;
+			}
+		}
+	}
 }
