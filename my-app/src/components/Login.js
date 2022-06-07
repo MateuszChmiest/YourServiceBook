@@ -154,7 +154,8 @@ const Login = () => {
 									<Button
 										variant='primary'
 										type='submit'
-										disabled={loading || currentUser}>
+										disabled={loading || currentUser}
+										id="Login__btn">
 										Login
 									</Button>
 									<Button variant="light" onClick={signInWithGoogle}><FcGoogle/></Button>
@@ -172,9 +173,11 @@ const Login = () => {
 									<Button
 										variant='primary'
 										type='submit'
-										disabled={loading || currentUser}>
+										disabled={loading || currentUser}
+										id="Login__btn">
 										Register
 									</Button>
+									<Button variant="light" onClick={signInWithGoogle}><FcGoogle/></Button>
 									<p>
 										Have an account?
 										<span
