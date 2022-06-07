@@ -10,7 +10,7 @@ import user_img from "../images/user.png";
 
 //* Import firebase
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { signup, login, useAuth, logout, auth } from "../firebase";
+import { signup, login, useAuth, logout, auth, authGoogle } from "../firebase";
 
 //* Import icons
 import { FcGoogle } from "react-icons/fc";
@@ -72,7 +72,7 @@ const Login = () => {
 
 	function signInWithGoogle() {
 		const provider = new GoogleAuthProvider();
-		signInWithPopup(auth, provider);
+		signInWithPopup(authGoogle, provider);
 	}
 
 	//Function to Logout

@@ -17,6 +17,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth();
 
+export const authGoogle = getAuth(app);
+
 export function signup(email,password) {
     return createUserWithEmailAndPassword(auth,email,password);
 }
