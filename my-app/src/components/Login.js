@@ -5,7 +5,6 @@ import { Button, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //*Import images
-import logo from "../images/logo.png";
 import user_img from "../images/user.png";
 
 //* Import firebase
@@ -226,7 +225,6 @@ const Login = () => {
 							)}
 						</Form>
 					</div>
-					<img src={logo} alt='logo' width={100} />
 				</section>
 			)}
 		</>

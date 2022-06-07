@@ -6,6 +6,11 @@
 	width: 100vw;
 	height: 100vh;
 	padding: 1rem;
+	background: url("./login-background.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
 
 	#error-text {
 		color: red;
