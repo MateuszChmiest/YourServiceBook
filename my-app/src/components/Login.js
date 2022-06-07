@@ -1,14 +1,31 @@
+import { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+//* Import icons
 import { Button, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+//*Import images
 import logo from "../images/logo.png";
 import user_img from "../images/user.png";
-import { useState } from "react";
-import { signup, login, useAuth, logout, auth } from "../firebase";
-import Pulpit from "./Hero";
-import { FcGoogle } from "react-icons/fc";
+
+//* Import firebase
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { signup, login, useAuth, logout, auth } from "../firebase";
+
+//* Import icons
+import { FcGoogle } from "react-icons/fc";
+
+//* Import components
+import Pulpit from "./Hero";
 import Preloader from "./Preloader";
+
+//* Import pages
+import Exploitation from "./pages/Exploitation";
+import Contact from "./pages/Contact";
+import MyCar from "./pages/MyCar";
+import Home from "./pages/Home";
+import Insurance from "./pages/Insurance";
+import Repairs from "./pages/Repairs";
 
 const Login = () => {
 	const [hasAccount, setHasAccount] = useState("false");
@@ -87,7 +104,12 @@ const Login = () => {
 				<Router>
 					<Pulpit handleLogout={handleLogout} currentUser={currentUser} />
 					<Routes>
-						<Route path='/' />
+						<Route path='/' element={<Home/>}/>
+						<Route path='/my-car' element={<MyCar/>}/>
+						<Route path='/exploitation' element={<Exploitation/>}/>
+						<Route path='/repairs' element={<Repairs/>}/>
+						<Route path='/insurance' element={<Insurance/>}/>
+						<Route path='/contact' element={<Contact/>}/>
 					</Routes>
 				</Router>
 				</>
