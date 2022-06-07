@@ -3,8 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import logo from "../images/logo.png";
 import user_img from "../images/user.png";
 import { useState } from "react";
-import { signup, login, useAuth, logout } from "../firebase";
+import { signup, login, useAuth, logout, auth } from "../firebase";
 import Pulpit from "./Pulpit";
+import { FcGoogle } from "react-icons/fc";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const Login = () => {
 	const [hasAccount, setHasAccount] = useState("false");
@@ -47,6 +49,11 @@ const Login = () => {
 			clearInputs();
 		}
 		setLoading(false);
+	}
+
+		function signInWithGoogle() {
+		const provider = new GoogleAuthProvider();
+		signInWithPopup(auth,provider)
 	}
 
 	//Function to Logout
@@ -150,6 +157,7 @@ const Login = () => {
 										disabled={loading || currentUser}>
 										Login
 									</Button>
+									<Button variant="light" onClick={signInWithGoogle}><FcGoogle/></Button>
 									<p>
 										Don't have an account?
 										<span
