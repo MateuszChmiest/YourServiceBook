@@ -15,7 +15,7 @@ const Pulpit = ({ handleLogout, currentUser }) => {
 
 	return (
 		<>
-		<IconContext.Provider value={{color: 'black'}}>
+		<IconContext.Provider value={{color: 'white'}}>
 			<div className='Hero'>
 				<Link to='#' className='Hero__bars'>
 					<FaBars onClick={showSidebar}/>
@@ -42,11 +42,11 @@ const Pulpit = ({ handleLogout, currentUser }) => {
 					})}
 				</ul>
 				<div className='Hero__user'>
-					<img src={userImg}/>
+					<img src={userImg} alt="user"/>
 				<h2>
 					<span>Welcome: </span><br/>
 					{currentUser.email}
-				</h2> 
+				</h2>
 				<Button
 					variant='primary'
 					onClick={handleLogout}

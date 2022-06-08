@@ -2,7 +2,11 @@ import React from 'react'
 
 function MyCar() {
   return (
-    <div className='myCar'><h1>My Car</h1></div>
+    <section className='My_car'>
+    <div className='My_car__box'>
+      <h1>My Car</h1>
+    </div>
+  </section>
   )
 }
 

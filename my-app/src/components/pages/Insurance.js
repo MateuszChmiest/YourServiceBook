@@ -2,7 +2,11 @@ import React from 'react'
 
 function Insurance() {
   return (
-    <div className='insurance'>Insurance</div>
+    <section className='Insurance'>
+    <div className='Insurance__box'>
+      <h1>Insurance</h1>
+    </div>
+  </section>
   )
 }
 

@@ -2,7 +2,11 @@ import React from 'react'
 
 function Home() {
   return (
-    <div className='home'>Home</div>
+    <section className='Home'>
+      <div className='Home__box'>
+        <h1>Home</h1>
+      </div>
+    </section>
   )
 }
 
