@@ -9,7 +9,8 @@ import user_img from "../images/user.png";
 
 //* Import firebase
 
-import { signup, login, useAuth, logout, signInWithGoogle} from "../firebase";
+import { signup, login, useAuth, logout, signInWithGoogle, db} from "../firebase";
+
 
 //* Import icons
 import { FcGoogle } from "react-icons/fc";
@@ -25,6 +26,7 @@ import MyCar from "./pages/MyCar";
 import Home from "./pages/Home";
 import Insurance from "./pages/Insurance";
 import Repairs from "./pages/Repairs";
+import { collection, addDoc } from "firebase/firestore/lite";
 
 const Login = () => {
 	const [hasAccount, setHasAccount] = useState("false");
@@ -51,7 +53,13 @@ const Login = () => {
 		}
 
 		try {
-			await signup(email, password);
+			const newUser = await signup(email, password);
+			const user = newUser.user;
+			await addDoc(collection(db, "users"), {
+				UID: user.uid,
+				email,
+				authProvider: "local",
+			});
 		} catch {
 			setError("registration error");
 			clearInputs();
@@ -137,9 +145,6 @@ const Login = () => {
 									value={email}
 									onChange={(e) => setEmail(e.target.value)}
 								/>
-								<Form.Text className='text-muted'>
-									We'll never share your email with anyone else.
-								</Form.Text>
 							</Form.Group>
 							{hasAccount ? (
 								<>
@@ -189,7 +194,7 @@ const Login = () => {
 										Login
 									</Button>
 									<Button variant='light' id="GoogleBtn" onClick={signInWithGoogle}>
-										<FcGoogle /> Sign in with Google
+										<FcGoogle /> Login with Google
 									</Button>
 									<p>
 										Don't have an account?
@@ -210,7 +215,7 @@ const Login = () => {
 										Register
 									</Button>
 									<Button variant='light' id="GoogleBtn" onClick={signInWithGoogle}>
-										<FcGoogle /> Sign in with Google
+										<FcGoogle /> Login with Google
 									</Button>
 									<p>
 										Have an account?

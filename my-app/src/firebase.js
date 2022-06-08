@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword,
    onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
 import { useEffect, useState } from "react";
-import { getFirestore } from "firebase/firestore"
+import { getFirestore, collection, setDoc } from "firebase/firestore/lite"
 
 
 
@@ -19,7 +19,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
 export const auth = getAuth();
 
 export const authGoogle = getAuth(app);
@@ -58,3 +57,7 @@ export function useAuth() {
 		}
 		
 	}
+
+
+  //* Firestore
+  export const db = getFirestore(app);
