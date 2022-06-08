@@ -8,8 +8,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import user_img from "../images/user.png";
 
 //* Import firebase
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { signup, login, useAuth, logout, auth, authGoogle } from "../firebase";
+
+import { signup, login, useAuth, logout, signInWithGoogle} from "../firebase";
 
 //* Import icons
 import { FcGoogle } from "react-icons/fc";
@@ -71,17 +71,6 @@ const Login = () => {
 			clearInputs();
 		}
 		setLoading(false);
-	}
-
-	//* Function to Login with Google
-	async function signInWithGoogle() {
-		const provider = new GoogleAuthProvider();
-		try {
-			signInWithPopup(authGoogle, provider);
-		} catch (err){
-			console.error(err);
-		}
-		
 	}
 
 	//* Function to Logout

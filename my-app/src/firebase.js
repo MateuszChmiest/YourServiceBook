@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut} from "firebase/auth";
+import {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup} from "firebase/auth";
 import { useEffect, useState } from "react";
+
 
 
 // Your web app's Firebase configuration
@@ -43,3 +44,13 @@ export function useAuth() {
   return currentUser
 }
 
+  const provider = new GoogleAuthProvider();
+	//* Function to Login with Google
+	export async function signInWithGoogle() {
+		try {
+			signInWithPopup(auth, provider);
+		} catch (err){
+			console.error(err);
+		}
+		
+	}
