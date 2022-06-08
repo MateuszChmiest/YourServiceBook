@@ -8,7 +8,7 @@ import { PulpitData } from "./HeroData";
 import { IconContext } from "react-icons";
 import Calendar from "./Calendar";
 
-const Pulpit = ({ handleLogout, currentUser }) => {
+const Hero = ({ handleLogout, currentUser }) => {
 
 	const [sidebar, setSidebar] = useState(false);
 
@@ -61,4 +61,4 @@ const Pulpit = ({ handleLogout, currentUser }) => {
 	);
 };
 
-export default Pulpit;
+export default Hero;

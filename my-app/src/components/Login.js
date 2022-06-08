@@ -15,7 +15,7 @@ import { signup, login, useAuth, logout, signInWithGoogle} from "../firebase";
 import { FcGoogle } from "react-icons/fc";
 
 //* Import components
-import Pulpit from "./Hero";
+import Hero from "./Hero";
 import Preloader from "./Preloader";
 
 //* Import pages
@@ -100,7 +100,7 @@ const Login = () => {
 				<>
 				<Preloader/>
 				<Router>
-					<Pulpit handleLogout={handleLogout} currentUser={currentUser} />
+					<Hero handleLogout={handleLogout} currentUser={currentUser} />
 					<Routes>
 						<Route path='/' element={<Home/>}/>
 						<Route path='/my-car' element={<MyCar/>}/>
