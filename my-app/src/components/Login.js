@@ -73,9 +73,15 @@ const Login = () => {
 		setLoading(false);
 	}
 
-	function signInWithGoogle() {
+	//* Function to Login with Google
+	async function signInWithGoogle() {
 		const provider = new GoogleAuthProvider();
-		return signInWithPopup(authGoogle, provider);
+		try {
+			signInWithPopup(authGoogle, provider);
+		} catch (err){
+			console.error(err);
+		}
+		
 	}
 
 	//* Function to Logout
