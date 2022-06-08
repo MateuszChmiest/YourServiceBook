@@ -35,7 +35,7 @@ const Login = () => {
 	const [repeatPassword, setRepeatPassword] = useState("");
 	const currentUser = useAuth();
 
-	//Function to SignUp
+	//* Function to SignUp
 	async function handleSignUp(e) {
 		e.preventDefault();
 		clearError();
@@ -55,7 +55,7 @@ const Login = () => {
 		setLoading(false);
 	}
 
-	//Function to SignIn
+	//* Function to SignIn
 	async function handleSignIn(e) {
 		e.preventDefault();
 		clearError();
@@ -74,7 +74,7 @@ const Login = () => {
 		signInWithPopup(authGoogle, provider);
 	}
 
-	//Function to Logout
+	//* Function to Logout
 	async function handleLogout() {
 		clearInputs();
 		try {
@@ -84,7 +84,7 @@ const Login = () => {
 		}
 	}
 
-	//Functions clear
+	//* Functions clear
 	function clearInputs() {
 		setEmail("");
 		setPassword("");
@@ -189,8 +189,8 @@ const Login = () => {
 										id='Login__btn'>
 										Login
 									</Button>
-									<Button variant='light' onClick={signInWithGoogle}>
-										<FcGoogle />
+									<Button variant='light' id="GoogleBtn" onClick={signInWithGoogle}>
+										<FcGoogle /> Sign in with Google
 									</Button>
 									<p>
 										Don't have an account?
@@ -210,8 +210,8 @@ const Login = () => {
 										id='Login__btn'>
 										Register
 									</Button>
-									<Button variant='light' onClick={signInWithGoogle}>
-										<FcGoogle />
+									<Button variant='light' id="GoogleBtn" onClick={signInWithGoogle}>
+										<FcGoogle /> Sign in with Google
 									</Button>
 									<p>
 										Have an account?
@@ -225,6 +225,7 @@ const Login = () => {
 							)}
 						</Form>
 					</div>
+					<p id="Login__copyright">© 2022 YourServiceBook, All Rights Reserved</p>
 				</section>
 			)}
 		</>

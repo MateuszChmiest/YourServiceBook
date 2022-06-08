@@ -6,6 +6,7 @@ import { FaBars, FaRegWindowClose } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { PulpitData } from "./HeroData";
 import { IconContext } from "react-icons";
+import Calendar from "./Calendar";
 
 const Pulpit = ({ handleLogout, currentUser }) => {
 
@@ -21,7 +22,7 @@ const Pulpit = ({ handleLogout, currentUser }) => {
 					<FaBars onClick={showSidebar}/>
 				</Link>
 				<img src={logo} alt="logo"/>
-				<h2>Night</h2>
+				<Calendar/>
 			</div>
 			<nav className={sidebar ? "Hero__nav active" : "Hero__nav"}>
 				<ul className='Hero__nav__items' onClick={showSidebar}>
