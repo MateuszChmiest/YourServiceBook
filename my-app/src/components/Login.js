@@ -45,9 +45,6 @@ const Login = () => {
 		if (!email) {
 			return setError("email") & setLoading(false);
 		}
-		// if (password.length >= 5) {
-		// 	return setError("Password must be longer than 6 characters") & setLoading(false);
-		// }
 		if (password !== repeatPassword) {
 			return setError("Passwords are not the same") & setLoading(false);
 		}
@@ -60,8 +57,9 @@ const Login = () => {
 				email,
 				authProvider: "local",
 			});
-		} catch {
-			setError("registration error");
+		} catch (err){
+			setError("Registration error");
+			console.error(err);
 			clearInputs();
 		}
 		setLoading(false);
