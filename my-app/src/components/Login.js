@@ -40,16 +40,20 @@ const Login = () => {
 		e.preventDefault();
 		clearError();
 		setLoading(true);
+		if (!email) {
+			return setError("email") & setLoading(false);
+		}
+		// if (password.length >= 5) {
+		// 	return setError("Password must be longer than 6 characters") & setLoading(false);
+		// }
 		if (password !== repeatPassword) {
 			return setError("Passwords are not the same") & setLoading(false);
 		}
-		// if (password.length > 6 || repeatPassword.length > 6) {
-		// 	return setError("Password must be longer than 6 characters") & setLoading(false);
-		// }
+
 		try {
 			await signup(email, password);
 		} catch {
-			setError("Password must be longer than 6 characters");
+			setError("registration error");
 			clearInputs();
 		}
 		setLoading(false);
@@ -71,7 +75,7 @@ const Login = () => {
 
 	function signInWithGoogle() {
 		const provider = new GoogleAuthProvider();
-		signInWithPopup(authGoogle, provider);
+		return signInWithPopup(authGoogle, provider);
 	}
 
 	//* Function to Logout
