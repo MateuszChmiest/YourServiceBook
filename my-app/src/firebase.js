@@ -12,9 +12,6 @@ import { useEffect, useState } from "react";
 import {
 	getFirestore,
 	collection,
-	query,
-	where,
-	getDocs,
 	addDoc,
 } from "firebase/firestore/lite";
 
@@ -48,7 +45,7 @@ export function logout() {
 	return signOut(auth);
 }
 
-//The function shows the logged user
+//* The function shows the logged user
 export function useAuth() {
 	const [currentUser, setCurrentUser] = useState();
 

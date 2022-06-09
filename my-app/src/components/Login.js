@@ -35,7 +35,7 @@ const Login = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [repeatPassword, setRepeatPassword] = useState("");
-	const currentUser = useAuth();
+    const currentUser = useAuth();
 
 	//* Function to SignUp
 	async function handleSignUp(e) {
