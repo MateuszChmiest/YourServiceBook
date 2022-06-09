@@ -4,7 +4,6 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	z-index: 9;
     box-shadow: rgb(0 0 0 / 40%) 0px 2px 3px, rgb(0 0 0 / 5%) 0px 1px 0px;
 
 	&__toggle {
@@ -91,6 +90,7 @@
 		left: -100%;
 		transition: 850ms;
 		box-shadow: rgb(0 0 0 / 20%) 5px 0px 10px;
+		z-index: 10;
 
 		&__items {
 			width: 100%;
