@@ -12,8 +12,8 @@
 		width: 85%;
 		height: 90%;
 		// background: rgba(241, 241, 241, 0.54);
-		background: url("../../images/wave.svg") no-repeat bottom;
-		background-size: cover;
+		background: url("../../images/wave1.svg") no-repeat bottom;
+		background-size:inherit;
 		border-radius: 16px;
 		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 		backdrop-filter: blur(7.6px);
@@ -23,7 +23,7 @@
 		@include tablet {
 			flex-direction: unset;
 			justify-content: space-around;
-			background: url("../../images/wave.svg") no-repeat bottom fixed;
+			background: url("../../images/wave1.svg") no-repeat bottom ;
 		}
 	}
 
@@ -34,6 +34,7 @@
 		h1 {
 			font-weight: 500;
 			font-size: 2.5rem;
+			text-shadow: 2px 2px 0px rgba(28,110,164,0.34);
 
 			@include tablet {
 				font-size: 4rem;

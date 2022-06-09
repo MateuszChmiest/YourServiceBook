@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 //* Import icons
 import { Button, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,13 +20,9 @@ import Hero from "./Hero";
 import Preloader from "./Preloader";
 
 //* Import pages
-import Exploitation from "./pages/Exploitation";
-import Contact from "./pages/Contact";
-import MyCar from "./pages/MyCar";
-import Home from "./pages/Home";
-import Insurance from "./pages/Insurance";
-import Repairs from "./pages/Repairs";
+
 import { collection, addDoc } from "firebase/firestore/lite";
+import AnimatedRoutes from "./AnimatedRoutes";
 
 const Login = () => {
 	const [hasAccount, setHasAccount] = useState("false");
@@ -107,14 +103,7 @@ const Login = () => {
 				<Preloader/>
 				<Router>
 					<Hero handleLogout={handleLogout} currentUser={currentUser} />
-					<Routes>
-						<Route path='/' element={<Home/>}/>
-						<Route path='/my-car' element={<MyCar/>}/>
-						<Route path='/exploitation' element={<Exploitation/>}/>
-						<Route path='/repairs' element={<Repairs/>}/>
-						<Route path='/insurance' element={<Insurance/>}/>
-						<Route path='/contact' element={<Contact/>}/>
-					</Routes>
+					<AnimatedRoutes/>
 				</Router>
 				</>
 			) : (

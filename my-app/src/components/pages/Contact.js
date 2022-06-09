@@ -1,12 +1,13 @@
 import React from 'react'
+import { motion } from "framer-motion";
 
 function Contact() {
   return (
-    <section className='Contact'>
+    <motion.section className='Contact' initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}>
     <div className='Contact__box'>
       <h1>Contact</h1>
     </div>
-  </section>
+  </motion.section>
   )
 }
 
