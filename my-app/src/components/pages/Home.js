@@ -14,7 +14,7 @@ function Home() {
         <div className='Home__text'>
           <h1>Welcome in <br/>Your <span>Service</span> Book</h1>
           <h2>an application where you can keep<br/> the most important information about your car!</h2>
-          <Button variant="primary" size="lg" id="Home__btn" onClick={() => navigate("/my-car")}>Get started!</Button>
+          <Button variant="primary" size="lg" id="Home__btn" onClick={() => navigate("/my-car")}>GET STARTED!</Button>
         </div>
         <div className='Home__img'>
           <img src={homeImg}/>
