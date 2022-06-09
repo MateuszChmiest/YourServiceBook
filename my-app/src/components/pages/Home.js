@@ -9,7 +9,7 @@ function Home() {
   const navigate = useNavigate();
 
   return (
-    <motion.section className='Home' initial={{width: 0, opacity:0}} animate={{width: '100vw', opacity:1}} exit={{x:window.innerHeight, opacity:0,transition: {duration: 0.15}}}>
+    <motion.section className='Home' initial={{scaleY:0}} animate={{scaleY:1}} exit={{scaleY:0}}>
       <div className='Home__box'>
         <div className='Home__text'>
           <h1>Welcome in <br/>Your <span>Service</span> Book</h1>

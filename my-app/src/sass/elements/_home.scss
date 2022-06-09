@@ -6,7 +6,7 @@
 
 	&__box {
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-evenly;
 		align-items: center;
 		flex-direction: column;
 		width: 85%;
@@ -22,8 +22,7 @@
 
 		@include tablet {
 			flex-direction: unset;
-			justify-content: space-around;
-			background: url("../../images/wave1.svg") no-repeat bottom ;
+			justify-content: space-evenly;
 		}
 	}
 
@@ -33,10 +32,13 @@
 
 		h1 {
 			font-weight: 500;
-			font-size: 2.5rem;
+			font-size: 2.75rem;
 			text-shadow: 2px 2px 0px rgba(28,110,164,0.34);
 
 			@include tablet {
+				font-size: 3rem;
+			}
+			@include laptop {
 				font-size: 4rem;
 			}
 
@@ -48,9 +50,14 @@
 		h2 {
 			font-size: 1rem;
 			font-weight: 400;
-			margin-bottom: 1.25rem;
+			margin-bottom: 1.75rem;
+			margin-top: 1rem;
 
 			@include tablet {
+				font-size: 1.25rem;
+			}
+
+			@include laptop {
 				font-size: 1.5rem;
 			}
 		}
@@ -106,8 +113,12 @@
 
 
 		img {
-			max-width: 600px;
+			max-width: 400px;
 			width: 100%;
+
+			@include tablet {
+				max-width: 600px;
+			}
 		}
 
 	}
