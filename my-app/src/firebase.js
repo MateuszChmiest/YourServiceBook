@@ -60,25 +60,50 @@ export function useAuth() {
 	return currentUser;
 }
 
-const provider = new GoogleAuthProvider();
-//* Function to Login with Google
-export async function signInWithGoogle() {
-	try {
-		const newUser = signInWithPopup(auth, provider);
-		const user = newUser.user;
-		const q = query(collection(db, "users"), where("uid", "==", user.uid));
-		const docs = await getDocs(q);
 
-		if (docs.docs.length === 0) {
-			await addDoc(collection(db, "users"), {
-				uid: user.uid,
-				email: user.email,
-				authProvider: "google",
-			});
-		}
-	} catch (err) {
-		console.error(err);
-	}
+
+//* Function to Login with Google
+// export async function signInWithGoogle() {
+// 	try {
+// 		const newUser = signInWithPopup(auth, provider);
+// 		const user = newUser.user;
+// 		console.log(user)
+// 		const q = query(collection(db, "users"), where("uid", "==", user.uid));
+// 		const docs = await getDocs(q);
+
+// 		if (docs.docs.length === 0) {
+// 			await addDoc(collection(db, "users"), {
+// 				uid: user.uid,
+// 				email: user.email,
+// 				authProvider: "google",
+// 			});
+// 		}
+// 	} catch (err) {
+// 		console.error(err);
+// 	}
+// }
+const provider = new GoogleAuthProvider();
+export const signInWithGoogle = () => {
+	signInWithPopup(auth, provider)
+  .then((result) => {
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    const user = result.user;
+	console.log(user)
+
+	addDoc(collection(db, "users"), {
+		uid: user.uid,
+		email: user.email,
+		authProvider: "google",
+	});
+  })
+  .catch((error) => {
+    console.log(error.code);
+    console.log(error.message);
+    console.log(error.customData.email);
+    console.log(GoogleAuthProvider.credentialFromError(error));
+  });
+
 }
 
 

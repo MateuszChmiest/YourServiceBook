@@ -15,7 +15,7 @@ const year = calendar.getFullYear();
   return (
         <OverlayTrigger
           placement="left"
-          overlay={<Tooltip id="button-tooltip-2">{day}.{month}.{date}.{year}</Tooltip>}
+          overlay={<Tooltip id="button-tooltip-2">{day}.{month} {date}.{year}</Tooltip>}
         >
           {({ ref, ...triggerHandler }) => (
             <Button
