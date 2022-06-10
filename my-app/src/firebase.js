@@ -63,26 +63,6 @@ export function useAuth() {
 
 
 //* Function to Login with Google
-// export async function signInWithGoogle() {
-// 	try {
-// 		const newUser = signInWithPopup(auth, provider);
-// 		const user = newUser.user;
-// 		console.log(user)
-// 		const q = query(collection(db, "users"), where("uid", "==", user.uid));
-// 		const docs = await getDocs(q);
-
-// 		if (docs.docs.length === 0) {
-// 			await addDoc(collection(db, "users"), {
-// 				uid: user.uid,
-// 				email: user.email,
-// 				authProvider: "google",
-// 			});
-// 		}
-// 	} catch (err) {
-// 		console.error(err);
-// 	}
-// }
-
 const provider = new GoogleAuthProvider();
 export const signInWithGoogle = async () => {
     try {

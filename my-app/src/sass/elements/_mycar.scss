@@ -8,12 +8,34 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		flex-direction: column;
 		width: 85%;
 		height: 90%;
 		border-radius: 16px;
 		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 		backdrop-filter: blur(7.6px);
 		border: 1px solid rgb(231, 231, 231);
-        z-index: -1;
+        z-index: 1;
+
+		h1 {
+			text-align: center;
+			margin-bottom: 2rem;
+			padding: 1rem;
+			color: $color-primary;
+			text-shadow: 2px 2px 0px rgba(28,110,164,0.15);
+		}
+	}
+	#mycar-form {
+		display: flex;
+		flex-direction: column;
+		width: 80%;
+	}
+
+	#car-btn {
+		text-align: center;
+	}
+
+	#mycar-btn {
+		width: 30%;
 	}
 }
