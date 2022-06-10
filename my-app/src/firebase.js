@@ -13,6 +13,9 @@ import {
 	getFirestore,
 	collection,
 	addDoc,
+	query,
+	where,
+	getDocs,
 } from "firebase/firestore/lite";
 
 // Your web app's Firebase configuration
@@ -79,28 +82,53 @@ export function useAuth() {
 // 		console.error(err);
 // 	}
 // }
+
 const provider = new GoogleAuthProvider();
-export const signInWithGoogle = () => {
-	signInWithPopup(auth, provider)
-  .then((result) => {
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-    const user = result.user;
-	console.log(user)
+export const signInWithGoogle = async () => {
+    try {
+        const newUser = await signInWithPopup(auth, provider);
+        const user = newUser.user;
+        const q = query(collection(db, "users"), where("uid", "==", user.uid));
+        const docs = await getDocs(q);
+        if (docs.docs.length === 0) {
+            await addDoc(collection(db, "users"), {
+                uid: user.uid,
+                name: user.displayName,
+                authProvider: "google",
+                email: user.email,
+            });
+        }
+    } catch (err) {
+        console.error(err);
+        alert(err.message);
+    }
+};
 
-	addDoc(collection(db, "users"), {
-		uid: user.uid,
-		email: user.email,
-		authProvider: "google",
-	});
-  })
-  .catch((error) => {
-    console.log(error.code);
-    console.log(error.message);
-    console.log(error.customData.email);
-    console.log(GoogleAuthProvider.credentialFromError(error));
-  });
+// export const signInWithGoogle = () => {
+// 	signInWithPopup(auth, provider)
+//   .then((result) => {
+//     const credential = GoogleAuthProvider.credentialFromResult(result);
+//     const token = credential.accessToken;
+//     const user = result.user;
+// 	console.log(user);
+// 	const q = query(collection(db, "users"), where("uid", "==", user.uid));
+// 	const docs = getDocs(q)
 
-}
+// 	if (docs.docs.length === 0) {
+// 		addDoc(collection(db, "users"), {
+// 			uid: user.uid,
+// 			email: user.email,
+// 			authProvider: "google",
+// 		});
+// 	}
+//   })
+//   .catch((error) => {
+//     console.log(error.code);
+//     console.log(error.message);
+//     console.log(error.customData.email);
+//     console.log(GoogleAuthProvider.credentialFromError(error));
+//   });
+
+// }
 
 
