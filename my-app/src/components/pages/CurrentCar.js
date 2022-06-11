@@ -3,6 +3,7 @@ import carImg from "../../images/your-car.png";
 
 const CurrentCar = () => {
 	return (
+		<section id="Car">
 		<div className='CurrentCar'>
             <h1>Your Car</h1>
 			<div className='CurrentCar__box'>
@@ -22,6 +23,7 @@ const CurrentCar = () => {
 				</div>
 			</div>
 		</div>
+		</section>
 	);
 };
 

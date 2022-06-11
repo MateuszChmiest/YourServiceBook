@@ -10,6 +10,7 @@ import Insurance from "./pages/Insurance";
 import Repairs from "./pages/Repairs";
 
 import { AnimatePresence } from "framer-motion";
+import CurrentCar from "./pages/CurrentCar";
 
 const AnimatedRoutes = () => {
 	const location = useLocation();
@@ -23,6 +24,7 @@ const AnimatedRoutes = () => {
 				<Route path='/repairs' element={<Repairs />} />
 				<Route path='/insurance' element={<Insurance />} />
 				<Route path='/contact' element={<Contact />} />
+				<Route path='/current-car' element={<CurrentCar/>}/>
 			</Routes>
 		</AnimatePresence>
 	);
