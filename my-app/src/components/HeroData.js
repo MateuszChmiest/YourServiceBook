@@ -5,7 +5,7 @@ import { GiAutoRepair } from "react-icons/gi";
 import { BsFillTelephoneFill, BsShieldCheck } from "react-icons/bs";
 
 
-export const PulpitData = [
+export const HeroData = [
     {
         title: 'Home',
         path: '/',
@@ -13,8 +13,8 @@ export const PulpitData = [
         cName: 'Hero__text',
     },
     {
-        title: 'My Car',
-        path: '/my-car',
+        title: 'My Cars',
+        path: '/my-cars',
         icon: <AiFillCar/>,
         cName: 'Hero__text',
     },

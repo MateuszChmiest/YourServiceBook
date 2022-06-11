@@ -4,7 +4,7 @@ import logo from "../images/logo-white.png";
 import userImg from "../images/user.png"
 import { FaBars, FaRegWindowClose } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { PulpitData } from "./HeroData";
+import { HeroData } from "./HeroData";
 import { IconContext } from "react-icons";
 import Calendar from "./Calendar";
 
@@ -31,7 +31,7 @@ const Hero = ({ handleLogout, currentUser }) => {
 							<FaRegWindowClose />
 						</Link>
 					</li>
-					{PulpitData.map((item,index) => {
+					{HeroData.map((item,index) => {
 						return (
 						<li key={index} className={item.cName}>
 							<Link to={item.path}>

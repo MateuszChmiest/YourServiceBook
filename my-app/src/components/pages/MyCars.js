@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Button, Form, Col, Row } from "react-bootstrap";
 import { useAuth } from "../../firebase";
-import { collection, addDoc, setDoc, doc } from "firebase/firestore/lite";
+import { collection, addDoc} from "firebase/firestore/lite";
 import { db } from "../../firebase";
 import { useNavigate } from "react-router";
 
@@ -14,13 +14,11 @@ function MyCar() {
 	const [engine, setEngine] = useState("");
 	const [enginePower, setEnginePower] = useState("");
 	const [vin, setVin] = useState("");
-	const [currentCar, setCurrentCar] = useState(false);
 	const currentUser = useAuth();
 	const navigate = useNavigate();
 
 	const handleSubmitCar = async (e) => {
     e.preventDefault();
-    setCurrentCar(true);
 		try {
 			const colRef = collection(db, 'cars');
 			await addDoc(colRef, {
@@ -31,15 +29,13 @@ function MyCar() {
 				engine: engine,
 				enginePower: enginePower,
 				vin: vin,
+				userUID: currentUser.uid
 			});
 		} catch (err) {
 			console.error(err);
 		}
+		navigate("/my-cars");
 	};
-
-	if(currentCar) {
-		return navigate("/current-car");
-	}
 
 	return (
 		<motion.section
@@ -47,10 +43,8 @@ function MyCar() {
 			initial={{ scaleY: 0 }}
 			animate={{ scaleY: 1 }}
 			exit={{ scaleY: 0 }}>
-			{/* {currentCar ? (
-				<CurrentCar />
-			) : ( */}
 				<div className='My_car__box'>
+				<div id="btnClose" onClick={() => navigate("/my-cars")}></div>
 					<h1>Provide information about your car</h1>
 					<Form id='mycar-form' onSubmit={handleSubmitCar}>
 						<Row className='mb-3'>
@@ -126,7 +120,6 @@ function MyCar() {
 						</div>
 					</Form>
 				</div>
-			{/* )} */}
 		</motion.section>
 	);
 }

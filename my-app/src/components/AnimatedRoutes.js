@@ -4,7 +4,7 @@ import { useLocation, Route, Routes } from "react-router";
 //* Import pages
 import Exploitation from "./pages/Exploitation";
 import Contact from "./pages/Contact";
-import MyCar from "./pages/MyCar";
+import MyCars from "./pages/MyCars"
 import Home from "./pages/Home";
 import Insurance from "./pages/Insurance";
 import Repairs from "./pages/Repairs";
@@ -19,12 +19,12 @@ const AnimatedRoutes = () => {
 		<AnimatePresence exitBeforeEnter>
 			<Routes location={location} key={location.pathname}>
 				<Route path='/' element={<Home />} />
-				<Route path='/my-car' element={<MyCar />} />
+				<Route path='/my-cars' element={<CurrentCar/>} />
 				<Route path='/exploitation' element={<Exploitation />} />
 				<Route path='/repairs' element={<Repairs />} />
 				<Route path='/insurance' element={<Insurance />} />
 				<Route path='/contact' element={<Contact />} />
-				<Route path='/current-car' element={<CurrentCar/>}/>
+				<Route path='/current-car' element={<MyCars />}/>
 			</Routes>
 		</AnimatePresence>
 	);
