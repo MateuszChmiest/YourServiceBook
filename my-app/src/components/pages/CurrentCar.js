@@ -35,9 +35,10 @@ const CurrentCar = () => {
 				<div className='CurrentCar__list'>
 					<ul className='CurrentCar__items'>
 						{hasCars ? 
-						(<>
+						(
+						<>
 						{carsData.map((data) => <li key={data.vin}>
-							{data.make} {data.model} {data.color} {data.year} {data.engine} {data.enginePower} {data.vin}
+							{data.make} {data.model} {data.color} {data.year} {data.engine} {data.enginePower} (VIN:{data.vin})
 							</li>)}
 						</>
 						) : (
