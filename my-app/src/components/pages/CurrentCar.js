@@ -10,14 +10,14 @@ const CurrentCar = () => {
 	const navigate = useNavigate();
 	const currentUser = useAuth();
 	const [carsData, setCarsData] = useState([]);
-	
+
 	useEffect(() => {
 		const getData = async () => {
 			const q = query(
 				collection(db, "cars"),
 				where("userUID", "==", currentUser.uid)
 			);
-			const querySnapshot = getDocs(q);
+			const querySnapshot = await getDocs(q);
 			try {
 				querySnapshot.forEach((doc) => {
 					setCarsData((prevData) => [...prevData, doc.data()]);
@@ -28,9 +28,8 @@ const CurrentCar = () => {
 			}
 		};
 		getData();
-		setHasCars(true)
-	},[])
-
+		setHasCars(true);
+	}, []);
 
 	return (
 		<motion.section
