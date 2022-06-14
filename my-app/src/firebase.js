@@ -29,6 +29,15 @@ const firebaseConfig = {
 	appId: "1:104302324327:web:4ee3d36061a53bfe3202c2",
 };
 
+// const firebaseConfig = {
+// 	apiKey: "AIzaSyCOcwdBeG-QVOh-c9Vk8tKGHwMJba7NheQ",
+// 	authDomain: "yourservicebook-8e4a1.firebaseapp.com",
+// 	projectId: "yourservicebook-8e4a1",
+// 	storageBucket: "yourservicebook-8e4a1.appspot.com",
+// 	messagingSenderId: "694618485623",
+// 	appId: "1:694618485623:web:c4027e88f41f6d4067a772"
+//   };
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);

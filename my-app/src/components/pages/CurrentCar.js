@@ -11,25 +11,56 @@ const CurrentCar = () => {
 	const currentUser = useAuth();
 	const [carsData, setCarsData] = useState([]);
 
-	useEffect(() => {
-		const getData = async () => {
-			const q = query(
-				collection(db, "cars"),
-				where("userUID", "==", currentUser.uid)
-			);
-			const querySnapshot = await getDocs(q);
-			try {
-				querySnapshot.forEach((doc) => {
-					setCarsData((prevData) => [...prevData, doc.data()]);
-					setHasCars(true);
-				});
-			} catch (err) {
-				console.error(err);
-			}
-		};
-		getData();
-		setHasCars(true);
-	}, []);
+	// const getData = async () => {
+	// 	const q = query(
+	// 		collection(db, "cars"),
+	// 		where("userUID", "==", currentUser.uid)
+	// 	);
+	// 	const querySnapshot = await getDocs(q);
+	// 	try {
+	// 		querySnapshot.forEach((doc) => {
+	// 			setCarsData((prevData) => [...prevData, doc.data()]);
+	// 			setHasCars(true);
+	// 		});
+	// 	} catch (err) {
+	// 		console.error(err);
+	// 	}
+	// 	setHasCars(true);
+	// };
+
+	// const getData = async () => {
+	// 	const q = query(
+	// 		collection(db, "cars"),
+	// 		where("userUID", "==", currentUser.uid)
+	// 	);
+	// 	const querySnapshot = await getDocs(q);
+	// 	if(querySnapshot.docs.length > 0 ) {
+	// 		querySnapshot.forEach((doc) => {
+	// 			setCarsData((prevData) => [...prevData, doc.data()]);
+	// 		});
+	// 	}
+	// 	setHasCars(true);
+	// };
+
+	// const getData = () => {
+	// 	const q = query(
+	// 		collection(db, "cars"),
+	// 		where("userUID", "==", currentUser.uid)
+	// 	);
+
+	// 	q.onSnapshot((querySnapshot) => {
+	// 		const items =[];
+	// 		querySnapshot.forEach((doc) => {
+	// 			items.push(doc.data())
+	// 		})
+	// 		setCarsData(items);
+	// 		setHasCars(true);
+	// 	})
+	// };
+
+	// useEffect(() => {
+	// 	getData();
+	// })
 
 	return (
 		<motion.section
@@ -61,6 +92,7 @@ const CurrentCar = () => {
 						<img src={carImg} />
 					</div>
 				</div>
+				{/* <button onClick={getData}></button> */}
 			</div>
 		</motion.section>
 	);
