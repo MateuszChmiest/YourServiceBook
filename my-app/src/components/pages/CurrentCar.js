@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import carImg from "../../images/your-car.png";
 import { motion } from "framer-motion";
-import { getDocs, query, where, collection } from "firebase/firestore/lite";
+import { getDocs, query, where, collection, deleteDoc, doc } from "firebase/firestore/lite";
 import { db, useAuth } from "../../firebase";
+import { AiFillDelete } from "react-icons/ai";
 
 const CurrentCar = () => {
 	const navigate = useNavigate();
@@ -19,13 +20,21 @@ const CurrentCar = () => {
 		try {
 			if (carsData.length < querySnapshot.docs.length) {
 				querySnapshot.forEach((doc) => {
-					setCarsData((prevData) => [...prevData, doc.data()]);
+					setCarsData((prevData) => [...prevData, {...doc.data(), id: doc.id}]);
 				});
 			}
 		} catch (err) {
 			console.error(err);
 		}
 	};
+
+	const deleteData = async (id) => {
+		try {
+			 await deleteDoc(doc(db, "cities", id));
+		} catch (err) {
+			console.error(err)
+		}
+	}
 
 	// const getData = async () => {
 	// 	const q = query(
@@ -78,11 +87,13 @@ const CurrentCar = () => {
 								<h2>You don't have added cars yet :(</h2>
 							) : (
 								<>
-									{carsData.map((data, index) => (
-										<li key={index}>
-											{data.make} {data.model} {data.color} {data.year}{" "}
+									{carsData.map((data) => (
+										<li className="CurrentCar__element" key={data.id}>
+											{data.make} {data.model} {data.color} {data.year}
 											{data.engine} {data.enginePower} (VIN:{data.vin})
+											<button className="CurrentCar__btn" type="button" onClick={() => deleteData(data.id)}><AiFillDelete/></button>
 										</li>
+										
 									))}
 								</>
 							)}
@@ -92,7 +103,6 @@ const CurrentCar = () => {
 						<img src={carImg} />
 					</div>
 				</div>
-				<button onClick={getData}>show</button>
 			</div>
 		</motion.section>
 	);

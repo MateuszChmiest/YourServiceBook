@@ -1,6 +1,5 @@
-
 #Car {
-    height: 100vh;
+	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -18,48 +17,100 @@
 	backdrop-filter: blur(7.6px);
 	border: 1px solid rgb(231, 231, 231);
 	z-index: 1;
-    background: url("../../images/wave1.svg") no-repeat bottom;
-    position: relative;
+	background: url("../../images/wave1.svg") no-repeat bottom;
+	position: relative;
 
-    #btn {
-        width: 35px;
-        height: 35px;
-        position: absolute;
-        border-radius: 7px;
-        background: green url(../../images/icon-plus.png) no-repeat center;
-        background-size: cover;
-        top: 10px;
-        right: 10px;
-        cursor: pointer;
-    }
+	#btn {
+		width: 28px;
+		height: 28px;
+		position: absolute;
+		border-radius: 6px;
+		background: green url(../../images/icon-plus.png) no-repeat center;
+		background-size: cover;
+		top: 10px;
+		right: 10px;
+		cursor: pointer;
 
-    h1 {
-        text-align: center;
-        margin-bottom: 2rem;
-        padding: 1rem;
-        color: $color-primary;
-        text-shadow: 2px 2px 0px rgba(28,110,164,0.15);
-    }
+		@include tablet {
+			width: 35px;
+			height: 35px;
+			border-radius: 7px;
+		}
+	}
 
-    h2 {
-        font-size: 2rem;
-        font-family: $font-secondary;
-        font-weight: 400;
-    }
+	h1 {
+		text-align: center;
+		margin-bottom: 1rem;
+		padding: 0.5rem;
+		color: $color-primary;
+		text-shadow: 2px 2px 0px rgba(28, 110, 164, 0.15);
+		font-size: 1.5rem;
 
-    &__box {
-        width: 100%;
-        display: flex;
-        flex-direction:  column;
-        align-items: center;
-    }
+		@include tablet {
+			font-size: 2.5rem;
+		}
+	}
 
-    &__img {
-        margin-top: 2rem;
-        padding: 1rem;
-        img {
-            max-width: 400px;
-            width: 100%;
-        }
-    }
+	&__box {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__img {
+		margin-top: 2rem;
+		padding: 1rem;
+		img {
+			max-width: 250px;
+			width: 100%;
+
+			@include tablet {
+				max-width: 400px;
+			}
+		}
+	}
+
+	&__list {
+		padding: 0.5rem;
+	}
+
+	&__element {
+		border: 1px solid #e9e9e9;
+		border-radius: 5px;
+		padding: 0.5rem;
+		margin-bottom: 0.5rem;
+		font-family: $font-secondary;
+		font-size: 0.675rem;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		box-shadow: 2px 4px 9px 0px rgba(0, 0, 0, 0.15);
+
+		@include tablet {
+			font-size: 1rem;
+		}
+
+		@include laptop {
+			font-size: 1.5rem;
+		}
+	}
+
+	&__btn {
+		background-color: transparent;
+		border: 1px solid red;
+		width: 1.75rem;
+		height: 1.75rem;
+		font-size: 0.85rem;
+		color: red;
+		text-align: center;
+		border-radius: 5px;
+		margin-left: 0.5rem;
+		transition: 0.2s;
+
+		&:hover {
+			background-color: red;
+			color: white;
+		}
+	}
 }
