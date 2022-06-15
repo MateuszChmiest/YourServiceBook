@@ -6,8 +6,7 @@
 
 	&__box {
 		display: flex;
-		justify-content: center;
-		align-items: center;
+		flex-direction: column-reverse;
 		width: 85%;
 		height: 90%;
 		background: rgba(241, 241, 241, 0.54);
@@ -15,6 +14,49 @@
 		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 		backdrop-filter: blur(7.6px);
 		border: 1px solid rgb(231, 231, 231);
-        z-index: -1;
+        z-index: 1;
+
+		@include tablet {
+			flex-direction: unset;
+		}
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background-color: $color-primary;
+		height: 50%;
+		width: 100%;
+		border-radius: 0 0 16px 16px;
+		border: 2px solid rgb(5, 145, 238);
+
+		@include tablet {
+			width: 50%;
+			height: 100%;
+			border-radius: 16px 0 0 16px;
+		}
+	}
+
+	&__img {
+		height: 50%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		@include tablet {
+			width: 50%;
+			height: 100%;
+		}
+
+		img {
+			max-width: 350px;
+			width: 100%;
+
+			@include tablet {
+				max-width: 500px;
+			}
+		}
 	}
 }

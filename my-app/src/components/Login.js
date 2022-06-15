@@ -39,7 +39,7 @@ const Login = () => {
 		clearError();
 		setLoading(true);
 		if (!email) {
-			return setError("email") & setLoading(false);
+			return setError("Enter email") & setLoading(false);
 		}
 		if (password !== repeatPassword) {
 			return setError("Passwords are not the same") & setLoading(false);
@@ -152,7 +152,7 @@ const Login = () => {
 										<Form.Label>Password</Form.Label>
 										<Form.Control
 											type='password'
-											placeholder='Password'
+											placeholder='min. 6 characters'
 											value={password}
 											onChange={(e) => setPassword(e.target.value)}
 										/>
@@ -163,7 +163,7 @@ const Login = () => {
 										<Form.Label>Repeat password</Form.Label>
 										<Form.Control
 											type='password'
-											placeholder='Password'
+											placeholder='min. 6 characters'
 											value={repeatPassword}
 											onChange={(e) => setRepeatPassword(e.target.value)}
 										/>
