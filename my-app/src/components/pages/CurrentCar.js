@@ -89,7 +89,7 @@ const CurrentCar = () => {
 								<>
 									{carsData.map((data) => (
 										<li className="CurrentCar__element" key={data.id}>
-											{data.make} {data.model} {data.color} {data.year}
+											{data.make} {data.model} {data.color} {data.year} {""}
 											{data.engine} {data.enginePower} (VIN:{data.vin})
 											<button className="CurrentCar__btn" type="button" onClick={() => deleteData(data.id)}><AiFillDelete/></button>
 										</li>
