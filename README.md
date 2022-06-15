@@ -1,6 +1,7 @@
 # YourServiceBook
 Yourservicebook is the React App that makes it easy to store information about the repairs and operation of your car.
-<img scr="(https://user-images.githubusercontent.com/94719206/173905785-7e67ad5c-6d92-4536-9897-2c9ec947327f.png)" width="360" height="200"/>
+
+<img src="https://user-images.githubusercontent.com/94719206/173905785-7e67ad5c-6d92-4536-9897-2c9ec947327f.png" width="360" height="200"/>
 
 ## Feautures
 <li>Responsive design</li>
