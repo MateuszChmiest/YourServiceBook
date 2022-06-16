@@ -30,7 +30,7 @@ const CurrentCar = () => {
 
 	const deleteData = async (id) => {
 		try {
-			 await deleteDoc(doc(db, "cities", id));
+			 await deleteDoc(doc(db, "cars", id));
 		} catch (err) {
 			console.error(err)
 		}
