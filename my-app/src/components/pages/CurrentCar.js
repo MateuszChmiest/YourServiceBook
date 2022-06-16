@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import carImg from "../../images/your-car.png";
 import { motion } from "framer-motion";
-import { getDocs, query, where, collection, deleteDoc, doc } from "firebase/firestore/lite";
+import {
+	getDocs,
+	query,
+	where,
+	collection,
+	deleteDoc,
+	doc,
+} from "firebase/firestore/lite";
 import { db, useAuth } from "../../firebase";
 import { AiFillDelete } from "react-icons/ai";
 
@@ -20,7 +27,10 @@ const CurrentCar = () => {
 		try {
 			if (carsData.length < querySnapshot.docs.length) {
 				querySnapshot.forEach((doc) => {
-					setCarsData((prevData) => [...prevData, {...doc.data(), id: doc.id}]);
+					setCarsData((prevData) => [
+						...prevData,
+						{ ...doc.data(), id: doc.id },
+					]);
 				});
 			}
 		} catch (err) {
@@ -28,13 +38,21 @@ const CurrentCar = () => {
 		}
 	};
 
-	const deleteData = async (id) => {
-		try {
-			 await deleteDoc(doc(db, "cars", id));
-		} catch (err) {
-			console.error(err)
-		}
+	const deleteList = (listID) => {
+		carsData.forEach((car) => {
+			if (car.id === listID) {
+				carsData.splice(car,1);
+			}
+		});
 	}
+
+	const deleteData = async (deleteID) => {
+		try {
+			await deleteDoc(doc(db, "cars", deleteID));
+		} catch (err) {
+			console.error(err);
+		}
+	};
 
 	// const getData = async () => {
 	// 	const q = query(
@@ -88,12 +106,16 @@ const CurrentCar = () => {
 							) : (
 								<>
 									{carsData.map((data) => (
-										<li className="CurrentCar__element" key={data.id}>
+										<li className='CurrentCar__element' key={data.id}>
 											{data.make} {data.model} {data.color} {data.year} {""}
 											{data.engine} {data.enginePower} (VIN:{data.vin})
-											<button className="CurrentCar__btn" type="button" onClick={() => deleteData(data.id)}><AiFillDelete/></button>
+											<button
+												className='CurrentCar__btn'
+												type='button'
+												onClick={() => deleteData(data.id) & deleteList(data.id)}>
+												<AiFillDelete />
+											</button>
 										</li>
-										
 									))}
 								</>
 							)}
