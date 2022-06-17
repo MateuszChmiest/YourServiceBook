@@ -38,17 +38,10 @@ const CurrentCar = () => {
 		}
 	};
 
-	const deleteList = (listID) => {
-		carsData.forEach((car) => {
-			if (car.id === listID) {
-				carsData.splice(car,1);
-			}
-		});
-	}
-
 	const deleteData = async (deleteID) => {
 		try {
 			await deleteDoc(doc(db, "cars", deleteID));
+			setCarsData((prev) => prev.filter((el) => el.id !== deleteID))
 		} catch (err) {
 			console.error(err);
 		}
@@ -112,7 +105,7 @@ const CurrentCar = () => {
 											<button
 												className='CurrentCar__btn'
 												type='button'
-												onClick={() => deleteData(data.id) & deleteList(data.id)}>
+												onClick={() => deleteData(data.id)}>
 												<AiFillDelete />
 											</button>
 										</li>
