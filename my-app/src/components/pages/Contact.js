@@ -16,7 +16,7 @@ function Contact() {
         </div>
         <div className='Contact__info'>
           <a href='tel: 123456789'><BsFillTelephoneFill/> <span>123 456 789</span></a>
-          <a href='mailto: info@yourservicebook.pl'><GrMail/> <span>info@yourservicebook.pl</span></a>
+          <a href='mailto: info@yourservicebook.com'><GrMail/> <span>info@yourservicebook.com</span></a>
         </div>
         <div className='Contact__social'>
           <a href='#'><AiFillFacebook/></a>

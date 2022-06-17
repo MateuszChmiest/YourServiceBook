@@ -10,6 +10,7 @@
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	max-width: 1300px;
 	width: 85%;
 	height: 90%;
 	border-radius: 16px;
@@ -49,6 +50,7 @@
 		@include tablet {
 			font-size: 2.5rem;
 		}
+
 	}
 
 	&__box {
@@ -73,6 +75,13 @@
 
 	&__list {
 		padding: 0.5rem;
+		h2 {
+			font-size: 1rem;
+
+			@include tablet {
+				font-size: 1.5rem;
+			}
+		}
 	}
 
 	&__element {
@@ -99,7 +108,7 @@
 	&__btn {
 		background-color: transparent;
 		border: 1px solid red;
-		width: 1.75rem;
+		width: 1.8rem;
 		height: 1.75rem;
 		font-size: 0.85rem;
 		color: red;

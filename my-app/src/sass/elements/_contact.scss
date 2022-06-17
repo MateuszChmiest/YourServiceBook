@@ -7,6 +7,7 @@
 	&__box {
 		display: flex;
 		flex-direction: column-reverse;
+		max-width: 1300px;
 		width: 85%;
 		height: 90%;
 		background: rgba(241, 241, 241, 0.54);
@@ -109,16 +110,16 @@
 		padding: 0.5rem;
 
 		@include tablet {
-			font-size: 1.35rem;
+			font-size: 1.25rem;
 
 		}
 
 		@include laptop {
-			font-size: 1.75rem;
+			font-size: 1.5rem;
 		}
 
 		@include desktop {
-			font-size: 2rem;
+			font-size: 1.75rem;
 			padding: 1.5rem;
 		}
 
