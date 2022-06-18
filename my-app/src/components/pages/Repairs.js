@@ -125,10 +125,14 @@ function Repairs() {
 		}
 	};
 
-  return (
-    <motion.section className='Repairs' initial={{scaleY:0}} animate={{scaleY:1}} exit={{scaleY:0}}>
-    <div className='Repairs__box'>
-      <Form className='Repairs__form' onSubmit={handleValidAdd}>
+	return (
+		<motion.section
+			className='Repairs'
+			initial={{ scaleY: 0 }}
+			animate={{ scaleY: 1 }}
+			exit={{ scaleY: 0 }}>
+			<div className='Repairs__box'>
+				<Form className='Repairs__form' onSubmit={handleValidAdd}>
 					<Form.Group as={Col} lg={12}>
 						<Form.Control
 							type='text'
@@ -193,9 +197,9 @@ function Repairs() {
 					</Modal.Header>
 					<Modal.Body>{error}</Modal.Body>
 				</Modal>
-    </div>
-  </motion.section>
-  )
+			</div>
+		</motion.section>
+	);
 }
 
-export default Repairs
+export default Repairs;

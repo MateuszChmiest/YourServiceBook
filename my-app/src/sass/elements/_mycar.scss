@@ -3,6 +3,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	position: relative;
 
 	&__box {
 		display: flex;
@@ -11,13 +12,14 @@
 		flex-direction: column;
 		max-width: 1300px;
 		width: 85%;
-		height: 90%;
+		min-height: 90%;
+		position: absolute;
+		top: 5%;
 		border-radius: 16px;
 		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 		backdrop-filter: blur(7.6px);
 		border: 1px solid rgb(231, 231, 231);
         z-index: 1;
-		position: relative;
 
 		#btnClose {
 			width: 35px;
