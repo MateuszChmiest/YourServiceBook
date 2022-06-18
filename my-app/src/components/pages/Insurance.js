@@ -17,7 +17,8 @@ function Insurance() {
 	const currentUser = useAuth();
 	const [insurance, setInsurance] = useState("");
 	const [car, setCar] = useState("");
-	const [date, setDate] = useState("");
+	const [fromDate, setFromDate] = useState("");
+  const [toDate, setToDate] = useState("");
 	const [error, setError] = useState("");
 	const [modal, setModal] = useState(false);
 	const [carsData, setCarsData] = useState([]);
@@ -48,7 +49,8 @@ function Insurance() {
 			const reaposne = await addDoc(colRef, {
 				insurance: insurance,
 				car: car,
-				date: date,
+				fromDate: fromDate,
+        toDate: toDate,
 				userUID: currentUser.uid,
 			});
 
@@ -58,7 +60,8 @@ function Insurance() {
 				{
 					insurance: insurance,
 					car: car,
-					date: date,
+					fromDate: fromDate,
+          toDate: toDate,
 					userUID: currentUser.uid,
 					id: reaposne.id,
 				},
@@ -104,7 +107,8 @@ function Insurance() {
 	//* Function clear inputs
 	const clearInputs = () => {
 		setInsurance("");
-		setDate("");
+		setFromDate("");
+    setToDate("");
 		setCar("");
 	};
 
@@ -117,7 +121,7 @@ function Insurance() {
 	//* Validation
 	const handleValidAdd = (e) => {
 		e.preventDefault();
-		if (insurance === "" || car === "" || date === "") {
+		if (insurance === "" || car === "" || fromDate === "" || toDate === "") {
 			setError("All fields must be completed.");
 			setModal(true);
 		} else {
@@ -134,7 +138,7 @@ function Insurance() {
 							type='text'
 							value={insurance}
 							className='Insurance__input'
-							placeholder='Engine insurance..'
+							placeholder='AVIVA | OC/AC..'
 							onChange={(e) => setInsurance(e.target.value)}
 						/>
 					</Form.Group>
@@ -154,13 +158,20 @@ function Insurance() {
 								))}
 							</Form.Select>
 						</Form.Group>
-
-						<Form.Group as={Col} lg={6}>
+						<Form.Group as={Col} lg={3}>
 							<Form.Control
 								type='date'
-								value={date}
+								value={fromDate}
 								className='Insurance__input'
-								onChange={(e) => setDate(e.target.value)}
+								onChange={(e) => setFromDate(e.target.value)}
+							/>
+						</Form.Group>
+            <Form.Group as={Col} lg={3}>
+							<Form.Control
+								type='date'
+								value={toDate}
+								className='Insurance__input'
+								onChange={(e) => setToDate(e.target.value)}
 							/>
 						</Form.Group>
 					</Row>
@@ -171,8 +182,8 @@ function Insurance() {
 				{insuranceData.length === 0 ? null : (
 					<ul className='Insurance__list'>
 						{insuranceData.map((insuranceData) => (
-							<li className='Repairs__element' key={insuranceData.id}>
-								{insuranceData.repair} | {insuranceData.car} | {insuranceData.date}
+							<li className='Insurance__element' key={insuranceData.id}>
+								{insuranceData.insurance} | {insuranceData.car} | ( from {insuranceData.fromDate} to {insuranceData.toDate} )
 								<button
 									className='Insurance__btn'
 									type='button'

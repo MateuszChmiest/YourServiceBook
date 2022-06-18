@@ -49,7 +49,7 @@ function MyCar() {
 			enginePower === "" ||
 			vin === ""
 		) {
-			setError("All fields must be completed");
+			setError("All fields must be completed.");
 			setModal(true);
 		} else {
 			handleSubmitCar();
@@ -123,7 +123,7 @@ function MyCar() {
 						<Form.Group as={Col}>
 							<Form.Label>Engine power</Form.Label>
 							<Form.Control
-								placeholder='150'
+								placeholder='150 HP'
 								value={enginePower}
 								onChange={(e) => setEnginePower(e.target.value)}
 							/>
