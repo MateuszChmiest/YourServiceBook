@@ -117,8 +117,8 @@ function Repairs() {
 	//* Validation
 	const handleValidAdd = (e) => {
 		e.preventDefault();
-		if (repairsData === "" || car === "" || date === "") {
-			setError("All fields must be completed");
+		if (repairs === "" || car === "" || date === "") {
+			setError("All fields must be completed.");
 			setModal(true);
 		} else {
 			handleAdd();
