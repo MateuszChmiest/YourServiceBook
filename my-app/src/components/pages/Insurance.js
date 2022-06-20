@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Form, Col, Row, Button, Modal } from "react-bootstrap";
 import {
@@ -18,7 +18,7 @@ function Insurance() {
 	const [insurance, setInsurance] = useState("");
 	const [car, setCar] = useState("");
 	const [fromDate, setFromDate] = useState("");
-  const [toDate, setToDate] = useState("");
+	const [toDate, setToDate] = useState("");
 	const [error, setError] = useState("");
 	const [modal, setModal] = useState(false);
 	const [carsData, setCarsData] = useState([]);
@@ -50,7 +50,7 @@ function Insurance() {
 				insurance: insurance,
 				car: car,
 				fromDate: fromDate,
-        toDate: toDate,
+				toDate: toDate,
 				userUID: currentUser.uid,
 			});
 
@@ -61,7 +61,7 @@ function Insurance() {
 					insurance: insurance,
 					car: car,
 					fromDate: fromDate,
-          toDate: toDate,
+					toDate: toDate,
 					userUID: currentUser.uid,
 					id: reaposne.id,
 				},
@@ -108,7 +108,7 @@ function Insurance() {
 	const clearInputs = () => {
 		setInsurance("");
 		setFromDate("");
-    setToDate("");
+		setToDate("");
 		setCar("");
 	};
 
@@ -129,10 +129,14 @@ function Insurance() {
 		}
 	};
 
-  return (
-    <motion.section className='Insurance' initial={{scaleY:0}} animate={{scaleY:1}} exit={{scaleY:0}}>
-    <div className='Insurance__box'>
-    <Form className='Insurance__form' onSubmit={handleValidAdd}>
+	return (
+		<motion.section
+			className='Insurance'
+			initial={{ scaleY: 0 }}
+			animate={{ scaleY: 1 }}
+			exit={{ scaleY: 0 }}>
+			<div className='Insurance__box'>
+				<Form className='Insurance__form' onSubmit={handleValidAdd}>
 					<Form.Group as={Col} lg={12}>
 						<Form.Control
 							type='text'
@@ -166,7 +170,7 @@ function Insurance() {
 								onChange={(e) => setFromDate(e.target.value)}
 							/>
 						</Form.Group>
-            <Form.Group as={Col} lg={3}>
+						<Form.Group as={Col} lg={3}>
 							<Form.Control
 								type='date'
 								value={toDate}
@@ -183,7 +187,8 @@ function Insurance() {
 					<ul className='Insurance__list'>
 						{insuranceData.map((insuranceData) => (
 							<li className='Insurance__element' key={insuranceData.id}>
-								{insuranceData.insurance} | {insuranceData.car} | ( from {insuranceData.fromDate} to {insuranceData.toDate} )
+								{insuranceData.insurance} | {insuranceData.car} | ( from{" "}
+								{insuranceData.fromDate} to {insuranceData.toDate} )
 								<button
 									className='Insurance__btn'
 									type='button'
@@ -205,8 +210,8 @@ function Insurance() {
 					<Modal.Body>{error}</Modal.Body>
 				</Modal>
 			</div>
-  </motion.section>
-  )
+		</motion.section>
+	);
 }
 
-export default Insurance
+export default Insurance;
