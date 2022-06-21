@@ -180,7 +180,7 @@ const Login = () => {
 										id='Login__btn'>
 										Login
 									</Button>
-									<Button variant='light' id="GoogleBtn" onClick={signInWithGoogle}>
+									<Button variant='light' id="GoogleBtn" type="button" onClick={()=> signInWithGoogle}>
 										<FcGoogle /> Login with Google
 									</Button>
 									<p>
@@ -201,7 +201,7 @@ const Login = () => {
 										id='Login__btn'>
 										Register
 									</Button>
-									<Button variant='light' id="GoogleBtn" onClick={signInWithGoogle}>
+									<Button variant='light' id="GoogleBtn" type="button" onClick={()=>signInWithGoogle}>
 										<FcGoogle /> Login with Google
 									</Button>
 									<p>
