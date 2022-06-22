@@ -9,9 +9,10 @@ import {
 	addDoc,
 	deleteDoc,
 	doc,
+	updateDoc
 } from "firebase/firestore/lite";
 import { db, useAuth } from "../../firebase";
-import { AiFillPlusCircle, AiFillDelete } from "react-icons/ai";
+import { AiFillPlusCircle, AiFillDelete, AiOutlineEdit  } from "react-icons/ai";
 
 function Insurance() {
 	const currentUser = useAuth();
@@ -21,8 +22,14 @@ function Insurance() {
 	const [toDate, setToDate] = useState("");
 	const [error, setError] = useState("");
 	const [modal, setModal] = useState(false);
+	const [editModal, setEditModal] = useState(false);
 	const [carsData, setCarsData] = useState([]);
 	const [insuranceData, setInsuranceData] = useState([]);
+	const [editInsurance, setEditInsurance] = useState("");
+	const [editCar, setEditCar] = useState("");
+	const [editFromDate, setEditFromDate] = useState("");
+	const [editToDate, setEditToDate] = useState("");
+	const [editID, setEditID] = useState("");
 
 	//* function get car data
 	const getData = async () => {
@@ -104,6 +111,33 @@ function Insurance() {
 		}
 	};
 
+		//* Function update Insurance
+		const updateExp = async (updateID) => {
+			try {
+				if (editCar === "" || editInsurance === "" || editFromDate === "" || editToDate === "") {
+					setError("All fields must be completed.");
+					setModal(true);
+				} else {
+					await updateDoc(doc(db, "insurance", updateID), {
+						insurance: editInsurance,
+						car: editCar,
+						fromDate: editFromDate,
+						toDate: editToDate
+					});
+					setInsuranceData((prevData) =>
+						prevData.map((data) =>
+							data.id === updateID
+								? {...data, insurance: editInsurance, car: editCar, fromDate: editFromDate, toDate: editToDate}
+								: data
+						)
+					);
+				}
+			} catch (err) {
+				console.error(err);
+			}
+			clearModalInputs();
+		};
+
 	//* Function clear inputs
 	const clearInputs = () => {
 		setInsurance("");
@@ -111,6 +145,13 @@ function Insurance() {
 		setToDate("");
 		setCar("");
 	};
+
+	const clearModalInputs = () => {
+		setEditCar("");
+		setEditInsurance("")
+		setEditFromDate("");
+		setEditToDate("")
+	}
 
 	//* UseEffect
 	useEffect(() => {
@@ -189,12 +230,20 @@ function Insurance() {
 							<li className='Insurance__element' key={insuranceData.id}>
 								{insuranceData.insurance} | {insuranceData.car} | ( from{" "}
 								{insuranceData.fromDate} to {insuranceData.toDate} )
+								<div>
 								<button
-									className='Insurance__btn'
+									className='Exploitation__btn'
+									type='button'
+									onClick={() => setEditModal(true) & setEditID(insuranceData.id)}>
+									<AiOutlineEdit />
+								</button>
+								<button
+									className='Exploitation__btn'
 									type='button'
 									onClick={() => deleteExp(insuranceData.id)}>
 									<AiFillDelete />
 								</button>
+								</div>
 							</li>
 						))}
 					</ul>
@@ -208,6 +257,60 @@ function Insurance() {
 						<Modal.Title id='example-modal-sizes-title-sm'>Error</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>{error}</Modal.Body>
+				</Modal>
+				<Modal show={editModal} onHide={() => setEditModal(false)}>
+					<Modal.Header closeButton>
+						<Modal.Title>Edit insurance</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>
+						<Form>
+							<Form.Group className='mb-3'>
+								<Form.Control
+									value={editInsurance}
+									type='text'
+									placeholder='AVIVA | OC/AC..'
+									onChange={(e) => setEditInsurance(e.target.value)}
+									autoFocus
+								/>
+							</Form.Group>
+							<Form.Select
+								className='mb-3'
+								value={editCar}
+								onClick={getData}
+								style={{ cursor: "pointer" }}
+								onChange={(e) => setEditCar(e.target.value)}>
+								<option>Select Car</option>
+								{carsData.map((car, index) => (
+									<option key={index}>
+										{car.make} {car.model}
+									</option>
+								))}
+							</Form.Select>
+							<Form.Group className='mb-3'>
+								<Form.Control
+									type='date'
+									value={editFromDate}
+									onChange={(e) => setEditFromDate(e.target.value)}
+									autoFocus
+								/>
+							</Form.Group>
+							<Form.Group className='mb-3'>
+								<Form.Control
+									type='date'
+									value={editToDate}
+									onChange={(e) => setEditToDate(e.target.value)}
+									autoFocus
+								/>
+							</Form.Group>
+						</Form>
+					</Modal.Body>
+					<Modal.Footer>
+						<Button
+							variant='primary'
+							onClick={(e) => setEditModal(false) & updateExp(editID)}>
+							Save Changes
+						</Button>
+					</Modal.Footer>
 				</Modal>
 			</div>
 		</motion.section>
