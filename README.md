@@ -13,7 +13,8 @@ Yourservicebook is the React App that makes it easy to store information about t
 <li>Responsive design</li>
 <li>Saving and fetching data from the firestore</li>
 <li>React icons</li>
-<li>Scroll layout after use navigation</li>
+<li>Mobile first</li>
+<li>Framer motion</li>
 <li>Login, signup, logout with firebase</li>
 <li>Login with Google</li>
 
