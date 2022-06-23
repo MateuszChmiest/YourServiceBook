@@ -9,10 +9,10 @@ import {
 	addDoc,
 	deleteDoc,
 	doc,
-	updateDoc
+	updateDoc,
 } from "firebase/firestore/lite";
 import { db, useAuth } from "../../firebase";
-import { AiFillPlusCircle, AiFillDelete, AiOutlineEdit  } from "react-icons/ai";
+import { AiFillPlusCircle, AiFillDelete, AiOutlineEdit } from "react-icons/ai";
 
 function Insurance() {
 	const currentUser = useAuth();
@@ -111,32 +111,43 @@ function Insurance() {
 		}
 	};
 
-		//* Function update Insurance
-		const updateExp = async (updateID) => {
-			try {
-				if (editCar === "" || editInsurance === "" || editFromDate === "" || editToDate === "") {
-					setError("All fields must be completed.");
-					setModal(true);
-				} else {
-					await updateDoc(doc(db, "insurance", updateID), {
-						insurance: editInsurance,
-						car: editCar,
-						fromDate: editFromDate,
-						toDate: editToDate
-					});
-					setInsuranceData((prevData) =>
-						prevData.map((data) =>
-							data.id === updateID
-								? {...data, insurance: editInsurance, car: editCar, fromDate: editFromDate, toDate: editToDate}
-								: data
-						)
-					);
-				}
-			} catch (err) {
-				console.error(err);
+	//* Function update Insurance
+	const updateExp = async (updateID) => {
+		try {
+			if (
+				editCar === "" ||
+				editInsurance === "" ||
+				editFromDate === "" ||
+				editToDate === ""
+			) {
+				setError("All fields must be completed.");
+				setModal(true);
+			} else {
+				await updateDoc(doc(db, "insurance", updateID), {
+					insurance: editInsurance,
+					car: editCar,
+					fromDate: editFromDate,
+					toDate: editToDate,
+				});
+				setInsuranceData((prevData) =>
+					prevData.map((data) =>
+						data.id === updateID
+							? {
+									...data,
+									insurance: editInsurance,
+									car: editCar,
+									fromDate: editFromDate,
+									toDate: editToDate,
+							  }
+							: data
+					)
+				);
 			}
-			clearModalInputs();
-		};
+		} catch (err) {
+			console.error(err);
+		}
+		clearModalInputs();
+	};
 
 	//* Function clear inputs
 	const clearInputs = () => {
@@ -148,10 +159,10 @@ function Insurance() {
 
 	const clearModalInputs = () => {
 		setEditCar("");
-		setEditInsurance("")
+		setEditInsurance("");
 		setEditFromDate("");
-		setEditToDate("")
-	}
+		setEditToDate("");
+	};
 
 	//* UseEffect
 	useEffect(() => {
@@ -231,18 +242,20 @@ function Insurance() {
 								{insuranceData.insurance} | {insuranceData.car} | ( from{" "}
 								{insuranceData.fromDate} to {insuranceData.toDate} )
 								<div>
-								<button
-									className='Exploitation__btn'
-									type='button'
-									onClick={() => setEditModal(true) & setEditID(insuranceData.id)}>
-									<AiOutlineEdit />
-								</button>
-								<button
-									className='Exploitation__btn'
-									type='button'
-									onClick={() => deleteExp(insuranceData.id)}>
-									<AiFillDelete />
-								</button>
+									<button
+										className='Exploitation__btn'
+										type='button'
+										onClick={() =>
+											setEditModal(true) & setEditID(insuranceData.id)
+										}>
+										<AiOutlineEdit />
+									</button>
+									<button
+										className='Exploitation__btn'
+										type='button'
+										onClick={() => deleteExp(insuranceData.id)}>
+										<AiFillDelete />
+									</button>
 								</div>
 							</li>
 						))}

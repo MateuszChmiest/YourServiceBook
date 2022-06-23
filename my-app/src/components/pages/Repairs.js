@@ -9,9 +9,10 @@ import {
 	addDoc,
 	deleteDoc,
 	doc,
+	updateDoc,
 } from "firebase/firestore/lite";
 import { db, useAuth } from "../../firebase";
-import { AiFillPlusCircle, AiFillDelete } from "react-icons/ai";
+import { AiFillPlusCircle, AiFillDelete, AiOutlineEdit } from "react-icons/ai";
 
 function Repairs() {
 	const currentUser = useAuth();
@@ -19,7 +20,12 @@ function Repairs() {
 	const [car, setCar] = useState("");
 	const [date, setDate] = useState("");
 	const [error, setError] = useState("");
+	const [editRepairs, setEditRepairs] = useState("");
+	const [editCar, setEditCar] = useState("");
+	const [editDate, setEditDate] = useState("");
+	const [editID, setEditID] = useState("");
 	const [modal, setModal] = useState(false);
+	const [editModal, setEditModal] = useState(false);
 	const [carsData, setCarsData] = useState([]);
 	const [repairsData, setRepairsData] = useState([]);
 
@@ -101,11 +107,48 @@ function Repairs() {
 		}
 	};
 
+	//* Function update repairs
+	const updateRepairs = async (updateID) => {
+		try {
+			if (editCar === "" || editRepairs === "" || editDate === "") {
+				setError("All fields must be completed.");
+				setModal(true);
+			} else {
+				await updateDoc(doc(db, "repairs", updateID), {
+					repair: editRepairs,
+					car: editCar,
+					date: editDate,
+				});
+				setRepairsData((prevData) =>
+					prevData.map((data) =>
+						data.id === updateID
+							? {
+									...data,
+									repair: editRepairs,
+									car: editCar,
+									date: editDate,
+							  }
+							: data
+					)
+				);
+			}
+		} catch (err) {
+			console.error(err);
+		}
+		clearModalInputs();
+	};
+
 	//* Function clear inputs
 	const clearInputs = () => {
 		setRepairs("");
 		setDate("");
 		setCar("");
+	};
+
+	const clearModalInputs = () => {
+		setEditCar("");
+		setEditRepairs("");
+		setEditDate("");
 	};
 
 	//* UseEffect
@@ -177,12 +220,20 @@ function Repairs() {
 						{repairsData.map((repairData) => (
 							<li className='Repairs__element' key={repairData.id}>
 								{repairData.repair} | {repairData.car} | {repairData.date}
-								<button
-									className='Repairs__btn'
-									type='button'
-									onClick={() => deleteExp(repairData.id)}>
-									<AiFillDelete />
-								</button>
+								<div>
+									<button
+										className='Repairs__btn'
+										type='button'
+										onClick={() => setEditModal(true) & setEditID(repairData.id)}>
+										<AiOutlineEdit />
+									</button>
+									<button
+										className='Repairs__btn'
+										type='button'
+										onClick={() => deleteExp(repairData.id)}>
+										<AiFillDelete />
+									</button>
+								</div>
 							</li>
 						))}
 					</ul>
@@ -196,6 +247,53 @@ function Repairs() {
 						<Modal.Title id='example-modal-sizes-title-sm'>Error</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>{error}</Modal.Body>
+				</Modal>
+
+				<Modal show={editModal} onHide={() => setEditModal(false)}>
+					<Modal.Header closeButton>
+						<Modal.Title>Edit repair</Modal.Title>
+					</Modal.Header>
+					<Modal.Body>
+						<Form>
+							<Form.Group className='mb-3'>
+								<Form.Control
+									value={editRepairs}
+									type='text'
+									placeholder='Engine repair..'
+									onChange={(e) => setEditRepairs(e.target.value)}
+									autoFocus
+								/>
+							</Form.Group>
+							<Form.Select
+								className='mb-3'
+								value={editCar}
+								onClick={getData}
+								style={{ cursor: "pointer" }}
+								onChange={(e) => setEditCar(e.target.value)}>
+								<option>Select Car</option>
+								{carsData.map((car, index) => (
+									<option key={index}>
+										{car.make} {car.model}
+									</option>
+								))}
+							</Form.Select>
+							<Form.Group className='mb-3'>
+								<Form.Control
+									type='date'
+									value={editDate}
+									onChange={(e) => setEditDate(e.target.value)}
+									autoFocus
+								/>
+							</Form.Group>
+						</Form>
+					</Modal.Body>
+					<Modal.Footer>
+						<Button
+							variant='primary'
+							onClick={(e) => setEditModal(false) & updateRepairs(editID)}>
+							Save Changes
+						</Button>
+					</Modal.Footer>
 				</Modal>
 			</div>
 		</motion.section>

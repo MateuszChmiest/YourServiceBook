@@ -64,20 +64,23 @@
 	}
 
 	&__btn {
+		display: flex;
+		flex-direction: column;
 		background-color: transparent;
-		border: 2px solid red;
-		width: 1.85rem;
-		height: 1.75rem;
-		font-size: 0.85rem;
-		color: red;
-		text-align: center;
-		border-radius: 5px;
-		margin-left: 0.5rem;
+		border: none;
+		width: 1.25rem;
+		height: 1.5rem;
+		font-size: 1.15rem;
+		color: white;
+		margin-right: 0.5rem;
 		transition: 0.2s;
 
+		@include tablet {
+			font-size: 1.5rem;
+		}
+
 		&:hover {
-			background-color: red;
-			color: white;
+			color: blue;
 		}
 	}
 
