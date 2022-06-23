@@ -224,7 +224,9 @@ function Repairs() {
 									<button
 										className='Repairs__btn'
 										type='button'
-										onClick={() => setEditModal(true) & setEditID(repairData.id)}>
+										onClick={() =>
+											setEditModal(true) & setEditID(repairData.id)
+										}>
 										<AiOutlineEdit />
 									</button>
 									<button

@@ -214,9 +214,9 @@ function Insurance() {
 								))}
 							</Form.Select>
 						</Form.Group>
-						<Form.Group as={Col} lg={3}>
+						<Form.Group as={Col} lg={3} id="input_date">
 							<Form.Control
-								type='date'
+							    type="date"
 								value={fromDate}
 								className='Insurance__input'
 								onChange={(e) => setFromDate(e.target.value)}

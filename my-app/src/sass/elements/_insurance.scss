@@ -85,4 +85,20 @@
 	&__submit {
 		font-family: $font-secondary;
 	}
+
+	#input_date {
+		position: relative;
+
+		&:after {
+			content: "to";
+			position: absolute;
+			right: 50%;
+			opacity: 0.35;
+
+			@include laptop {
+				top: 50%;
+				right: -5px;
+			}
+		}
+	}
 }
